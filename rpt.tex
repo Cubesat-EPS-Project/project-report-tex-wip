@@ -1,0 +1,86 @@
+\documentclass[12pt]{report} 
+%-----------------------------------------------------------------
+% Latex template for a Bachelor Capstone Project Report/Thesis 
+% (CSE 499) of the Department of uter Science and Engineering 
+% at the University of Liberal Arts Bangladesh (ULAB)
+
+% Written By: Muhammad Abul Hasan, PhD
+% Date Updated: February 02, 2021
+% For any comments or suggestions: muhammad.hasan@ulab.edu.bd
+%-----------------------------------------------------------------
+\usepackage{ulabcse499}
+
+\usepackage{ragged2e}
+
+%-----------------------------------------------------------------
+% Set your report/thesis particulars 
+%-----------------------------------------------------------------
+% Use one: Thesis/Capstone project report/Project report
+%\def\RoportType{Capstone project report\xspace} 
+%\def\RoportType{Thesis\xspace}
+\def\Department {Electrical and Electronics Engineering\xspace}
+\def\University {Government Engineering College, Barton Hill\xspace}
+\def\RoportType{Project report\xspace}
+\def\Degree {Bachelor of Technology in Electrical and Electronics Engineering\xspace}
+\def\ReportTitle{FM Transmitter Circuit
+	\xspace}
+\def\Supervisor{Prof. Rajesh M\xspace} 
+\def\SupervisorPosition{Assistant Professor\xspace}
+\def\Supervisora{Er. Karthika B\xspace} 
+\def\SupervisorPositiona{Assistant Professor-Adhoc\xspace}
+\def\Supervisorb{Er. Thara Mohan\xspace} 
+\def\SupervisorPositionb{Assistant Professor-Adhoc\xspace}
+\def\reportSubmissionDate{\today}
+
+\def\reportSubmissionTerm{Spring 2021}
+
+
+%-----------------------------------------------------------------
+% Set your group members particulars 
+%-----------------------------------------------------------------
+
+\def\numberOfAuthors{4} % write 1, 2 or 3 (depends on your group)
+%
+\def\firstAuthor{Mary Angel Gomez\xspace} 
+\def\firstAuthorID{TRV19EE036\xspace}
+\def\firstAuthorFatherName{FA Father name\xspace}
+\def\firstAuthorMotherName{FA Mother name\xspace}
+%
+\def\secondAuthor{Mayoogha SL\xspace} 
+\def\secondAuthorID{TRV19EE037\xspace} 
+\def\secondAuthorFatherName{SA Father name\xspace}
+\def\secondAuthorMotherName{SA Mother name\xspace}
+%
+\def\thirdAuthor{Naveen AB\xspace} 
+\def\thirdAuthorID{TRV19EE038\xspace} 
+\def\thirdAuthorFatherName{TA Father name\xspace}
+\def\thirdAuthorMotherName{TA Mother name\xspace}
+
+\def\fourthAuthor{Navya S\xspace} 
+\def\fourthAuthorID{TRV19EE039\xspace} 
+\def\fourthAuthorFatherName{TA Father name\xspace}
+\def\fourthAuthorMotherName{TA Mother name\xspace}
+
+%-----------------------------------------------------------------
+
+\begin{document}
+\input{./Setup/front}
+
+%----------------------------------------------------------------
+% Include Chapters 
+%----------------------------------------------------------------
+ \include{./Chapters/chapter1}
+
+ \include{./Chapters/chapter3}
+ \include{./Chapters/chapter4}
+ \include{./Chapters/chapter5}
+ \include{./Chapters/chapter6}
+ \include{./Chapters/chapter7}
+ \include{./Chapters/chapter8}
+ \include{./Chapters/chapter9}
+  \include{./Chapters/chapter2}
+  \include{references}
+%-----------------------------------------------------------------
+\input{./Setup/rear}
+
+\end{document}

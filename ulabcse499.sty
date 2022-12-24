@@ -1,0 +1,68 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{ulabcse499}[2021/02/02 Capstone project/project package]
+
+\RequirePackage{mathpazo}
+\RequirePackage{textcase}
+\RequirePackage{ifthen}
+\RequirePackage{amssymb}
+\RequirePackage{graphicx}
+\RequirePackage{natbib}
+\RequirePackage{multicol}
+\RequirePackage{xspace}
+\RequirePackage[dvipsnames]{xcolor}
+\RequirePackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=red,
+    linktoc=all
+}
+
+\setlength{\topmargin}{0.0in}
+\setlength{\oddsidemargin}{0.33in}
+\setlength{\evensidemargin}{-0.08in}
+\setlength{\textheight}{8.5in}
+\setlength{\textwidth}{6.0in}
+
+%-----------------------------------------------------------------
+\newcommand{\frontmatter}[1]{%
+  \ifthenelse{\equal{#1}{1}}
+    {\include{./FrontMatter/titlePage}
+    \include{./FrontMatter/copyright}
+    \include{./FrontMatter/declaration}
+    \include{./FrontMatter/certificate}
+    \include{./FrontMatter/acknowledgements}
+    \include{./FrontMatter/dedication}
+    \include{./FrontMatter/abstract}}
+    {\ifthenelse{\equal{#1}{2}}
+      {\include{./FrontMatter/titlePage2}
+      \include{./FrontMatter/copyright2}
+      \include{./FrontMatter/declaration2}
+      \include{./FrontMatter/certificate2}
+      \include{./FrontMatter/acknowledgements2}
+      \include{./FrontMatter/dedication2}
+      \include{./FrontMatter/abstract}}
+      {\include{./FrontMatter/titlePage3}
+      \include{./FrontMatter/copyright3}
+      \include{./FrontMatter/declaration3}
+      \include{./FrontMatter/certificate3}
+      \include{./FrontMatter/acknowledgements3}
+      \include{./FrontMatter/dedication3}
+      \include{./FrontMatter/abstract3}}
+    }
+  }
+
+\newcommand{\coverpage}[1]{%
+  \ifthenelse{\equal{#1}{1}} {
+	\include{./CoverPage/cover}}
+	{\ifthenelse{\equal{#1}{2}} 
+	  {\include{./CoverPage/cover2}}
+	  {\include{./CoverPage/cover3}}
+	}
+  }
+%-----------------------------------------------------------------
+\def\Department{Computer Science and Engineering\xspace}
+\def\University{University of Liberal Arts Bangladesh\xspace}
+\def\Degree{Bachelor of Science in Computer Science and Engineering\xspace}
+\def\HodName{Dr. Syed Akhter Hossain\xspace}
+\def\HodPosition{Professor and Head\xspace}
