@@ -1,22 +1,47 @@
-\chapter{Circuit Diagram}
+\chapter{Component Selection and Design}
+\justifying
+\section[Solar Panels]{Solar Panels}
+ TJ Solar Cell 3G30C - Advanced is selected. This cell is a GaInP/GaAs/Ge on Ge substrate triple junction solar cell. The end-of-life version of the 3G30C solar cell offers best EOL-performance
+ values. Connected to the EPS via an external bypass diode protection.
+ 
+ Specifications:
+ \begin{itemize}
+ 	\item Average Open Circuit Voltage: 2.7V
+ 	\item Maximum Power Point Voltage: 2.41V
+ 	\item Average Short Circuit Current: 520.2 mA
+ 	\item Maximum Power Point Current: 504.4mA
+ \end{itemize}
+It has an average efficiency of 29.8\% at 1353 $W/m^{2}$. This solar cell is excellent for space applications. 
+\\
+Solar panels are connected in such a way that each side has two cells connected in series.The maximum voltage developed per side is 4.4V and the maximum current that can be generated per side at peak power point is 0.5A.
+Panels on opposite sides are connected in parallel.
 
 
-	\begin{figure}[ht]
-		\centering
-		\includegraphics[width=0.70\textwidth]{circuit.png}
-		\caption{FM transmitter circuit diagram}
-		\label{fig:circuit}
-	\end{figure}
-	
+\section[MPPT Circuit]{Maximum Power Point Tracking Circuit}
+The MPPT converter connected to the solar panels increases the efficiency as the
+maximum power is transferred from the radiated energy that is on the solar panels.
+As each solar panel has different temperatures and incident radiance angles, the
+Maximum Power Point (MPP) is also different. So each solar panel has a MPPT
+converter to assure that the maximum power available at the solar panels is
+transferred independently from their working power points.Since the peak power
+point cannot be accurately predicted, many different algorithms exist for finding
+the best approximation. The MPPT can be implemented in the EPS using one of three algorithms:
+{\bf Perturb and Observe, Incremental Conductance, Constant Voltage}
 
-
-\begin{figure}[ht]
-	\centering
-	\includegraphics[width=0.60\textwidth]{Circuit-Hardware.jpg}
-	\caption{FM transmitter hardware}
-	\label{fig:hardware}
-\end{figure}
-
-
-
-
+{\Huge \bf IC ALT}
+\section[Battery]{Battery}
+The most popular types of batteries use the following materials: Nickel Cadmium
+(NiCd), Nickel Metal Hydride (NiMH), Nickel Hydrogen (NiH2), Lithium Ion
+(Li-Ion) and Lithium Polymer (Li-Po). The Li-Po and Li-Ion became the standard use in space technology due to their
+high energy density (Upto 200 Wh / kg on Li-Po and upto 250 Wh / kg on Li-Ion) and also due to
+the number of charging cycles being as high as the NiMH, whilst presenting higher
+operating temperatures. 
+The Panasonic NCR 18650 GA Li-Ion cell was selected based on the calculation of EOL power, EOL efficiency and due to it's high energy density.
+Specifications of Panasonic NCR 18650 GA:
+\begin{itemize}
+	\item Voltage: 3.7V - 4.2V
+	\item Capacity: 3500mAh
+	\item 1800 cycles till capacity reduces to 60\%
+\end{itemize}
+\section[Battery Charger]{Battery Charger}
+ The battery also needs a charger to regulate its current and voltage while charging.

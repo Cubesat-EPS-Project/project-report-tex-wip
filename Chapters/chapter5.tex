@@ -1,19 +1,60 @@
-\chapter{Components Required}
+\justifying
+\chapter{The Electrical Power System}
+The Electrical Power System (EPS) is an electronic circuit board that is designed
+to supply, manage and store energy in an efficient way. The EPS must be
+able to harvest energy from the solar panels and store it in the battery, as well as
+delivering power to the satellite, using switch controlled converters to supply a
+regulated voltage. Redundant circuitry must be present to ensure continuous and reliable operation of the satellite in case of the failure of EPS components.
+\\
 
+The output of the solar panels is first run through the power path control. While in
+sunlight operation, the power path will select the voltage from the panels based on
+its higher voltage. The output of the Power Path control is sent to DC-DC converters to provide 5V and 3.3V regulated DC supply for the Cubesat modules. During the eclipse, the power path will select the battery to power the circuit components.
+\\
+The software is implemented in order to manage the overall energy of the satellite,
+regulate the converters to extract maximum power from solar panels, perform
+power diagnostics, engage redundant circuitry and to communicate with the On
+Board Computer. The software also employs four operating modes: Initialization
+mode, Safe mode, Normal mode and Low Power Mode.
+\\
+
+\subsection[Comps]{Components of EPS}
+The EPS of a cubeSat can be designed with many different architectures, but some
+components are common to all designs, such as:
 \begin{itemize}
-	
-	\item Resistor 86k$\Omega$ - 1 nos
-	\item Resistor 10k$\Omega$ - 1 nos
-	\item Resistor 3.3k$\Omega$ - 1 nos
-	\item Resistor 2.2k$\Omega$ - 1 nos
-	\item Resistor 100$\Omega$ - 1 nos
-	\item Capacitor 1$\mu$F - 2 nos
-	\item Capacitor 2.2 nF - 2 nos
-		    \item Inductor 200$\mu$H – 1 nos
-	\item Capacitor 4.4 nF – 1 nos
-	\item Capacitor 100pF – 2 nos
-	\item Variable Capacitor 10pF – 2 nos
-	\item Transistor BC108 – 2 nos
-	\item Transistor 2N2369 – 1 nos
-	\item Antenna – 1 nos					
+	\item Solar panels to harvest the energy from the Sun
+	\item Battery charger to manage the charging profile of the battery
+	\item Voltage regulators to feed the regulated power bus of the satellite
+	\item Remove Before Flight (RBF) switches and deployment switches, to cut the
+	power while the satellite is not deployed
+\end{itemize}
+Other components of the EPS are:
+\begin{itemize}
+	\item Battery and associated charging circuit
+	\item Solar panels on 6 faces of the satellite
+	\item MPPT converters which help optimise power collection from the sun
+	\item Buck and boost converters which help provide required voltage busses for
+	components of different voltages
+	\item  STM32 used as the MCU which controls the tasks that the EPS performs and
+	monitors the status of the components
+	\item Over Current Protection Circuit which helps protects important components from
+	high current flow
+	\item  Current and Voltage sensors to keep track of their consumption.
+	\item  Temperature sensors to measure battery temperature, based on which battery
+	heater is used
+	\item Battery heater circuit
+\end{itemize}
+\subsection[Comps]{Tasks of EPS}
+Tasks of the EPS are:
+\begin{itemize}
+	\item Collect housekeeping for various components associated with it, like the various
+	current \& voltage sensors and the battery’s state of charge.
+	\item Handle housekeeping requests and other commands from the OBC (ON/OFF requests of any subsystem by OBC).
+	\item  Implement MPPT to optimize power generation.
+	\item  Control the Simple Beacon (which contains only the call sign of the satellite)
+	before the TTC gets switched on.
+	\item  Implement a watchdog timer to keep a check on the operation of the OBC.
+	\item   Take action on the basis of OCPC triggers.
+	\item  Deployment of antenna at the time of satellite initialisation.
+	\item  Turn on the battery heater when temperature goes below critical level
 \end{itemize}
