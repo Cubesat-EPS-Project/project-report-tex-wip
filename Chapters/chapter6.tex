@@ -45,3 +45,54 @@ Specifications of Panasonic NCR 18650 GA:
 \end{itemize}
 \section[Battery Charger]{Battery Charger}
  The battery also needs a charger to regulate its current and voltage while charging.
+ BQ25302, a synchronous Buck Battery Charger IC was selected and connected in external power path mode.
+ Specifications and Operating Conditions of BQ25302:
+ \begin{itemize}
+ 	\item Input Voltage: Upto 5V
+ 	\item Output Voltage: Upto 4.2V
+ 	\item Switching Frequency: 1.2MHz
+ 	\item Output Current: Limited to 1.2A
+ 	\item Thermistor: Semitec 103AT-2 (10\si{\kilo\ohm})
+ 	\item Charging Temperature: Limited between 0 - 45 $^{o}C$
+ \end{itemize}
+
+\section[BUBO]{Buck and Boost Converters}
+The power conditioning is associated with regulating the voltage to accommodate
+for the charging voltage and the voltages of the satellite's subsystems. In most
+subsystems, the need for a specific voltage requires a regulation of either a step-up
+or a step-down of the supplied voltage. It can be done by buck
+convertor(step-down) and boost converter(step-up).
+TPS62203 was selected as the buck converter to provide step down voltage of the DC bus to supply the 3.3V loads.\\
+
+ Specifications and Operating Conditions of TPS62203:
+\begin{itemize}
+	\item Input Voltage: 3.6 - 5V
+	\item Output Voltage:  3.3V
+	\item Switching Frequency: 1MHz
+	\item Output Current: 300mA (max.)
+\end{itemize}
+
+
+ LTC3426 was selected as the boost converter to provide step up voltage of the DC bus to supply the 5V loads.\\
+ 
+  Specifications and Operating Conditions of LTC3426:
+ \begin{itemize}
+ 	\item Input Voltage: 3.6 - 5V
+ 	\item Output Voltage: 5V
+ 	\item Switching Frequency: 1.2MHz
+ 	\item Output Current: 500mA (max.)
+ \end{itemize}
+All convertors operate in continuous conduction mode.
+
+\section[BUBO]{Protection Circuits}
+The circuit used for the protection purpose is the current limiting circuit. Unlike a
+fuse that breaks a circuit connection, a current limiter only limits the current at a
+predetermined level. The current limiting circuit can be as simple as a single
+resistor (a passive current limiter), with the voltage drop across the resistor being
+dependant on the consumed current by the load. Higher the current drawn by the
+load, higher the voltage drop on that resistor. In many cases, this is not preferable.
+An active current limiting circuits does not drop the voltage if the current drawn by
+the load is below the allowable range. With this mechanism, all power is delivered
+to the load in the normal condition. If the load tries to draw a current that is more
+than allowed then the current limiting circuit will act as a resistor, controlling its
+resistant value to limit the current to a predetermined level.

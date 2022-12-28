@@ -13,8 +13,11 @@
 \usepackage{ragged2e}
 \usepackage[printonlyused,withpage]{acronym}
 \usepackage{sectsty}
-
-
+\usepackage[utf8]{inputenc}
+\DeclareMathSymbol{\Omega}{\mathalpha}{letters}{"0A}% italics
+\DeclareMathSymbol{\varOmega}{\mathalpha}{operators}{"0A}% upright
+\providecommand*{\upOmega}{\varOmega}% for siunitx
+\usepackage[binary-units=true]{siunitx}
 
 \chapternumberfont{\huge} 
 \chaptertitlefont{\huge}
