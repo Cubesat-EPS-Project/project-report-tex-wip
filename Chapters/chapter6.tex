@@ -28,7 +28,17 @@ point cannot be accurately predicted, many different algorithms exist for findin
 the best approximation. The MPPT can be implemented in the EPS using one of three algorithms:
 {\bf Perturb and Observe, Incremental Conductance, Constant Voltage}
 
-{\Huge \bf IC ALT}
+The SPV1040 was chosen as the MPPT IC. It is a boost converter with duty ratio controlled by Perturb and Observe MPPT algorithm. The perturb and observe algorithm is based on monitoring either the voltage or the current supplied by the DC power source unit so that the PWM signal duty cycle is increased or decreased step-by-step according to the input power trend. This chip has inbuilt over-current protection and a cutoff mechanism if the solar panel connection is reverse-inserted to prevent damage to the IC and the external circuit.
+
+Specifications of  SPV1040:
+	\begin{itemize}
+	\item Input Voltage: 0.3 - 5.5V
+	\item Output Voltage: 5V
+	\item Switching Frequency: 100kHz
+%	\item Inbuilt over-current, temperature protection
+	\item Efficiency: 95\%
+\end{itemize}
+
 \section[Battery]{Battery}
 The most popular types of batteries use the following materials: Nickel Cadmium
 (NiCd), Nickel Metal Hydride (NiMH), Nickel Hydrogen (NiH2), Lithium Ion
@@ -45,16 +55,20 @@ Specifications of Panasonic NCR 18650 GA:
 \end{itemize}
 \section[Battery Charger]{Battery Charger}
  The battery also needs a charger to regulate its current and voltage while charging.
- BQ25302, a synchronous Buck Battery Charger IC was selected and connected in external power path mode.
+ BQ25302, a synchronous Buck Battery Charger IC was selected and connected in external power path mode.\\
+ 
  Specifications and Operating Conditions of BQ25302:
- \begin{itemize}
+\begin{itemize}
  	\item Input Voltage: Upto 5V
  	\item Output Voltage: Upto 4.2V
  	\item Switching Frequency: 1.2MHz
  	\item Output Current: Limited to 1.2A
+ 	\item Efficiency: 94.3\% at 1A from 5V input
  	\item Thermistor: Semitec 103AT-2 (10\si{\kilo\ohm})
  	\item Charging Temperature: Limited between 0 - 45 $^{o}C$
  \end{itemize}
+
+
 
 \section[BUBO]{Buck and Boost Converters}
 The power conditioning is associated with regulating the voltage to accommodate
