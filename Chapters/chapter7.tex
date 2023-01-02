@@ -1,24 +1,29 @@
 \chapter{Power Budget}
  It is important to determine the power budget at the beginning of the EPS design to determine the characteristics of the system. When the available space for the solar cells and the orbital parameters are known, power production can be estimated.
  The power requirements of CubeSat as a whole depend upon the power requirements of the individual components and how the components are used together for operations. Together with the efficiency information of the EPS components, this data is used to determine critical elements of the EPS design, like required solar array and battery size.
- A CubeSat will have standard set of satellite subsystems: Structural subsystem, Telemetry, Electrical Power Subsystem (EPS), thermal subsystem (TCS), Attitude Determination and Control Subsystem (ADCS, On Board Combuter (OBC) and Payload. For the calculations, we selected payload as a LoRa module which is the payload of GECB satellite program (cite reference). The orbital parameters are given below:
+ \\
+ A CubeSat will have standard set of satellite subsystems: Structural subsystem, Telemetry, Electrical Power Subsystem (EPS), thermal subsystem (TCS), Attitude Determination and Control Subsystem (ADCS), On Board Combuter (OBC) and Payload. For the calculations, we selected payload as a LoRa module which is the payload of GECB satellite program (cite reference). The orbital parameters are given below:
+ 
 \begin{table}[]
+	\begin{center}
 	\begin{tabular}{|l|l|}
 		\hline
-		\textbf{Parameter} & \textbf{Value} \ \hline
-		Orbital altitude   & 590 km         \ \hline
-		Orbital radius     & 6968.14 km     \ \hline
-		Flight velocity    & 7.563 km/s     \ \hline
-		Orbital period     & 96.483 min     \ \hline
-		Eclipse time       & 31.164 min     \ \hline
-		Daylight time      & 65.319 min     \ \hline
+		\textbf{Parameter} & \textbf{Value} \\ \hline
+		Orbital altitude   & 590 km         \\ \hline
+		Orbital radius     & 6968.14 km     \\ \hline
+		Flight velocity    & 7.563 km/s     \\ \hline
+		Orbital period     & 96.483 min     \\ \hline
+		Eclipse time       & 31.164 min     \\ \hline
+		Daylight time      & 65.319 min     \\ \hline
 	\end{tabular}
+\end{center}
 \end{table}
- The CubeSat has an orbital altitude of 590 km with an orbital radius of 6968.14 km to maintain a flight velocity of 7.563km km/s. The orbital period is 96 min 29 sec with an eclipse time of 31 min 10 sec and daylight time of 65 min 19 sec. Based on the power budget, the energy required by the CubeSat is 1.997 Wh per orbit. Hence, the solar panels must designed be able to produce at least 1.997 Wh per orbit.
+ \pagebreak
+\\The CubeSat has an orbital altitude of 590 km with an orbital radius of 6968.14 km to maintain a flight velocity of 7.563 km/s. The orbital period is 96 min 29 sec with an eclipse time of 31 min 10 sec and daylight time of 65 min 19 sec. Based on the power budget, the energy required by the CubeSat is 1.997 Wh per orbit. Hence, the solar panels must designed be able to produce at least 1.997 Wh per orbit.
  \\
  
  Power requirements of various components of each subsystems are given below. Since the power production may vary due to parameters like efficiency of panels, margin and contingency are added to the total power requirements(cite reference).\\
- \begin{table}[]
+ \begin{table}[h]
  	\begin{adjustbox}{width=\columnwidth,center}
  		\begin{tabular}{|l|l|r|r|r|r|r|r|r|}
  			\hline
