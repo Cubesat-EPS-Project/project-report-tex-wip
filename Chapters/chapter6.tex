@@ -69,8 +69,8 @@ Specifications of Panasonic NCR 18650 GA:
  	\item Input Voltage: Upto 5V
  	\item Output Voltage: Upto 4.2V
  	\item Switching Frequency: 1.2MHz
- 	\item Output Current: Limited to 1.2A
- 	\item Efficiency: 94.3\% at 1A from 5V input
+ 	\item Output Current: Limited to 1.2A by connecting a 33.5k resistor at ICHG pin 
+ 	\item Efficiency: 94.3\% at 1A from 5V input 
  	\item Thermistor: Semitec 103AT-2 (10\si{\kilo\ohm})
  	\item Charging Temperature: Limited between 0 - 45 $^{o}C$
  \end{itemize}
@@ -84,7 +84,7 @@ The Battery Charger circuit schematic is shown below:
 \end{figure}
 
 
-\section[BUBO]{Buck and Boost Converters}
+\section[Switching Regulators]{Buck and Boost Converters}
 The power conditioning is associated with regulating the voltage to accommodate
 for the charging voltage and the voltages of the satellite's subsystems. In most
 subsystems, the need for a specific voltage requires a regulation of either a step-up
@@ -122,7 +122,7 @@ The Buck and Boost Converter circuit schematic is shown below:
 
 
 
-\section[BUBO]{Protection Circuits}
+\section[Protection Circuits]{Protection Circuits}
 The circuit used for the protection purpose is the current limiting circuit. Unlike a
 fuse that breaks a circuit connection, a current limiter only limits the current at a
 predetermined level. The current limiting circuit can be as simple as a single
@@ -134,3 +134,5 @@ the load is below the allowable range. With this mechanism, all power is deliver
 to the load in the normal condition. If the load tries to draw a current that is more
 than allowed then the current limiting circuit will act as a resistor, controlling its
 resistant value to limit the current to a predetermined level.
+\\
+LTC4361-2 is selected as the over voltage and over current protection IC. It control an external N-channel MOSFET as a switch to cut the path of current if there is an event of over current or voltage. Manual control of the MOSFET is also possible which may be useful to turn off power to buses by the micro-controller as per different modes of operation of the CubeSat.
