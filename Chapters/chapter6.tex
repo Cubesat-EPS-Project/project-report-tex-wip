@@ -75,6 +75,13 @@ Specifications of Panasonic NCR 18650 GA:
  	\item Charging Temperature: Limited between 0 - 45 $^{o}C$
  \end{itemize}
 
+The Battery Charger circuit schematic is shown below:
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\columnwidth]{batt2.pdf}
+	\caption{Battery Charger circuit with BQ25302}
+	\label{fig:battch}
+\end{figure}
 
 
 \section[BUBO]{Buck and Boost Converters}
@@ -103,7 +110,17 @@ TPS62203 was selected as the buck converter to provide step down voltage of the 
  	\item Switching Frequency: 1.2MHz
  	\item Output Current: 500mA (max.)
  \end{itemize}
-All convertors operate in continuous conduction mode.
+All convertors operate in continuous conduction mode.\\
+
+The Buck and Boost Converter circuit schematic is shown below:
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\columnwidth]{1.pdf}
+	\caption{LTC3426 as boost IC and TPS62203 as buck IC}
+	\label{fig:bubo}
+\end{figure}
+
+
 
 \section[BUBO]{Protection Circuits}
 The circuit used for the protection purpose is the current limiting circuit. Unlike a
