@@ -69,16 +69,45 @@ The most popular types of batteries use the following materials: Nickel Cadmium
 high energy density (Upto 200 Wh / kg on Li-Po and upto 250 Wh / kg on Li-Ion) and also due to
 the number of charging cycles being as high as the NiMH, whilst presenting higher
 operating temperatures. 
-The Panasonic NCR 18650 GA Li-Ion cell was selected based on the calculation of EOL power, EOL efficiency and due to it's high energy density.
-Specifications of Panasonic NCR 18650 GA:
+\subsection{Battery Selection}
+According to solar power calculations, the solar panel can produce 2.86 Wh of energy in a single orbit, of which 1.016 Wh will be used up in sun phase in worst case ($E_{max}$). So there will be atleast 1.844 Wh of energy left to charge the battery.\\
+In power budget, the most amount of energy required during eclipse phase is 0.769 Wh.\\ \\
+Assign 50\% contingency, the battery needs energy of 1.1535 Wh for charging, to use in worst case eclipse mode. This energy corresponds to 30\% of total battery capacity (End Of Life capacity of battery).\\ \\
+So, we need a battery with Beginning Of Life capacity of 3.845 Wh.\\ \\
+\hspace*{5cm}Required Ah of battery = $\frac{Estimated\;\; Wh}{Battery\;\; Voltage}$
+\\ \\ \hspace*{5cm}So, required Ah = $\frac{3.845 Wh}{3.6 V}$ = 1.068 Ah\\
+
+
+Considered options are Samsung 18650 and Panasonic 18650 Li-ion cells. Samsung 18650 has 2500 mAh capacity, 3.6V and a capacity loss of 60\% after 250 charging cycles ($N_{in}$=250). Panasonic 18650 has 3350 mAh capacity, 3.6V and a capacity loss of 60\% after 300 charging cycles ($N_{in}$=300).\\ \\
+for a CubeSat mission of 3 months, required battery cycles will be around 1460 cycles (since each day, CubeSat goes through 16 sun phase).\\ \\
+Total no. of cycles a cell can provide = $N_{T}$\\ \\
+\hspace*{3cm} $N_{T} = \frac{N_{in} \times C_{B}}{C_{exp}}$
+\\ 
+Where,\\
+$N_{in}$ = initial number of cycles a battery can provide)
+\\ $C_{B}$ = Capacity of the battery
+\\ $C_{exp}$ = Capacity expected to use\\
+%Capacity expected to use = $C_{exp}$\\ \\
+\hspace*{3cm} $C_{exp} = \frac{E_{max}}{V_{B}}$
+\\ Where,\\
+ $E_{max}$ = Maximum energy consumed in a phase with 50\% contingency
+\\ $V_{B}$ = Battery voltage\\ \\
+Therefore, $C_{exp} = \frac{1.524}{3.6V}$ = 450 mAh \\ \\
+Total no. of cycles Samsung 18650 can provide =$\frac{250 \times 2500}{450}$ = 1388 cycles\\ \\
+Total no. of cycles Panasonic 18650 can provide =$\frac{300 \times 3350}{450}$ = 2200 cycles\\ 
+
+\textbf{Therefore, Panasonic 18650 is selected, as it can compensate the charging cycle requirements.}
+Specifications of Panasonic NCR 18650 GA Li-Ion cell:
 \begin{itemize}
 	\item Voltage: 3.7V - 4.2V
 	\item Capacity: 3500mAh
+	\item Can withstand 2200 charge-discharge cycles
 	\item 1800 cycles till capacity reduces to 60\%
 \end{itemize}
 \section[Battery Charger]{Battery Charger}
  The battery also needs a charger to regulate its current and voltage while charging.
  BQ25302, a synchronous Buck Battery Charger IC was selected and connected in external power path mode.\\
+ 
  
  Specifications and Operating Conditions of BQ25302:
 \begin{itemize}
@@ -95,7 +124,7 @@ The Battery Charger circuit schematic is shown below:
 \begin{figure}[ht]
 	\centering
 	\includegraphics[width=\columnwidth]{batt2.pdf}
-	\caption{Battery Charger circuit with BQ25302}
+	\caption{Schematic of Battery Charger circuit with BQ25302}
 	\label{fig:battch}
 \end{figure}
 
@@ -166,8 +195,8 @@ The screw terminals are used to connect to the power inputs and outputs of the P
  	\item SCLSDA2 pins: I2C connection to micro-controller relaying measured parameters of 5V bus by U3 (LTC2990) 
  	\item SCLSDA3 pins: I2C connection to micro-controller relaying measured parameters of input bus ($V_{in}$) by U1 (LTC2990)
  \end{itemize}
-\section{PCB Layout}
- A double layer PCB was designed from the schematic (Ref. Fig. 8.4). The second layer was used as the GROUND plane. The schematic and PCB design was done in KiCad EDA.
+\subsection{PCB Layout}
+ A double layer PCB was designed from the schematic (Ref. Fig. 8.4). The second layer was used as the GROUND plane. The schematic and PCB design was done in KiCad EDA. 
  
   \begin{figure}[H]
  	\centering
