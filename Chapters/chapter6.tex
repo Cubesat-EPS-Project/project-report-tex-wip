@@ -136,3 +136,8 @@ than allowed then the current limiting circuit will act as a resistor, controlli
 resistant value to limit the current to a predetermined level.
 \\
 LTC4361-2 is selected as the over voltage and over current protection IC. It control an external N-channel MOSFET as a switch to cut the path of current if there is an event of over current or voltage. Manual control of the MOSFET is also possible which may be useful to turn off power to buses by the micro-controller as per different modes of operation of the CubeSat.
+
+\section{Voltage and Current Measurement}
+ Voltage and current passing through each bus and subsystems are continuously monitored by sensors and this information is fed to the micro-controller. These measurements help in estimation of load requirement of subsystems and also help in triggering of protection circuits if a subsystem needs to be turned off in case of an occurrence of a fault. 
+ \\
+ LTC2990 was chosen as the voltage  and current monitor. It can measure the voltage of four external channels and it's supply voltage ($V_{cc}$) simultaneously. It has a 14 bit ADC for measurement. The LTC2990 has the ability to perform 14-bit current measurements with the addition of a current sense resistor. The measurements are passed on to the micro-controller through I2C interface.

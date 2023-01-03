@@ -3,7 +3,7 @@
  It is important to determine the power budget at the beginning of the EPS design to determine the characteristics of the system. When the available space for the solar cells and the orbital parameters are known, power production can be estimated.
  The power requirements of CubeSat as a whole depend upon the power requirements of the individual components and how the components are used together for operations. Together with the efficiency information of the EPS components, this data is used to determine critical elements of the EPS design, like required solar array and battery size.
  \\
- A CubeSat will have standard set of satellite subsystems: Structural subsystem, Telemetry, Electrical Power Subsystem (EPS), thermal subsystem (TCS), Attitude Determination and Control Subsystem (ADCS), On Board Computer (OBC) and Payload. For the calculations, we selected payload as a LoRa module which is the payload of GECB satellite program (cite reference). The orbital parameters are given below:
+ A CubeSat will have standard set of satellite subsystems: Structural subsystem, Telemetry, Electrical Power Subsystem (EPS), Thermal Control Subsystem (TCS), Attitude Determination and Control Subsystem (ADCS), On Board Computer (OBC) and Payload. For the calculations, a LoRa module was selected as the payload. The orbital parameters are given below:
  
 \begin{table}[]
 	\begin{center}
@@ -23,7 +23,7 @@
 The CubeSat has an orbital altitude of 590 km with an orbital radius of 6968.14 km to maintain a flight velocity of 7.563 km/s. The orbital period is 96 min 29 sec with an eclipse time of 31 min 10 sec and daylight time of 65 min 19 sec. Based on the power budget, the energy required by the CubeSat is 1.997 Wh per orbit. Hence, the solar panels must designed be able to produce at least 1.997 Wh per orbit.
  \\
  
- Power requirements of various components of each subsystems are given below. Since the power production may vary due to parameters like efficiency of panels, margin and contingency are added to the total power requirements(cite reference).\\
+ Power requirements of various components of each subsystems are given below. Since the power production may vary due to parameters like efficiency of panels, margin and contingency are added to the total power requirements.\\
  \begin{table}[h]
  	\begin{adjustbox}{width=\columnwidth,center}
  		\begin{tabular}{|l|l|r|r|r|r|r|r|r|}
@@ -152,7 +152,7 @@ The CubeSat has an orbital altitude of 590 km with an orbital radius of 6968.14 
  	\end{adjustbox}
  \end{table}
 \\
- Conventionally, EPS will work on different modes to manage the overall power production and distribution of the CubeSat (cite reference). The main modes are initializing mode, which is during the initial phase of CubeSat launch and the normal mode, which is the rest of the mission. The initializing mode is divided into three. Pre launch mode, launch mode and initializing. In pre launch mode, all subsystems are off, in launch mode, that is when the CubeSat is deployed into orbit, the EPS and OBC turns on and during initializing, all subsystems are turned on for a small amount of time to check whether all subsystems are working properly. The normal mode consists of safe mode and nominal mode. During safe mode, only the EPS and beacon of telemetry system works, and the CubeSat is in a power saving mode. The nominal mode is the general purpose mode were payload will function.
+ Conventionally, EPS will work on different modes to manage the overall power production and distribution of the CubeSat. The main modes are initializing mode, which is during the initial phase of CubeSat launch and the normal mode, which is the rest of the mission. The initializing mode is divided into three. Pre launch mode, launch mode and initializing. In pre launch mode, all subsystems are off, in launch mode, that is when the CubeSat is deployed into orbit, the EPS and OBC turns on and during initializing, all subsystems are turned on for a small amount of time to check whether all subsystems are working properly. The normal mode consists of safe mode and nominal mode. During safe mode, only the EPS and beacon of telemetry system works, and the CubeSat is in a power saving mode. The nominal mode is the general purpose mode were payload will function.
  \\
  To calculate battery and solar panel specifications, the peak power budget of the CubeSat is only considered since the power requirements won’t exceed that requirements. The other modes are only documented for designing the functioning of micro-controller which controls the EPS.
  \\
