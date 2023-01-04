@@ -1,7 +1,16 @@
 \chapter{Introduction}
 
 \justifying
-A CubeSat is a class of miniaturized satellite based around a form factor consisting
+\section{Background}
+Artificial satellites are foundational components of modern society. Satellites have played a huge role in communication, global positioning and the study of the solar system and beyond. The first artificial satellite, Sputnik, was launched in 1957. The launch of the first
+meteorological satellite, TIROS-1, in 1960 was followed by the U.S. The first Earth-observing satellite for land-based applications was Landsat-1, which was launched in 1972. Since then many more Earth-observing satellites have been put into orbit. The whole process of designing, building, and launching a satellite-flown remote sensing system is a very lengthy and costly process. The main driving force behind the enormously costly development
+of space technology has been the military, where cost is not usually a problem. With the relaxation
+on restrictions for ownership and operation of Earth-observing satellites .......................
+
+
+
+
+\\A CubeSat is a class of miniaturized satellite based around a form factor consisting
 of 10 cm cubes. CubeSats have a mass of no more than 2 kg per unit, and often use
 commercial off-the-shelf (COTS) components for their electronics and structure.
 CubeSats are put into orbit by deployers on the International Space Station, or
@@ -23,3 +32,25 @@ on technology demonstrations to help define what materials and processes yield t
 most useful resources and function best in a microgravity environment, the variety
 of science enabled by CubeSats results in diverse benefits and opportunities for
 discovery.
+
+\section{Objective}
+
+%To design and implement a fully autonomous power generation, storage and distribution
+%system for a CubeSat
+The aim of this project is to determine requirements for a typical CubeSat Electrical Power System (EPS) and develop a working prototype of the EPS for a CubeSat.
+
+\section{Literature Review}
+\justifying
+[1] shows the comparison between different CubeSat EPS architectures, from which we have identified the architecture with maximum power point tracking and a regulated DC buses to be most suitable for our application.
+\\
+
+The difference between centralized and distributed architecture was discussed in [2] and we have selected centralized architecture.
+\\
+
+As discussed in [3], solar panels operate at their most efficient points with a power point tracking algorithm, allowing the extraction of maximum power from the solar panels. Hence, peak power transfer is preferred to direct power transfer.
+\\
+
+Different battery technologies used in CubeSats were discussed in [4] and Li-ion cells were selected as the energy storage device due to their high energy density and higher number of charge discharge cycles compared to LiPo and NiMH batteries.
+\\
+
+From [5], the optimum ambient temperature for charging a Lithium ion battery is +5°C to +45°C and thus, charging is limited to this range of temperature.
