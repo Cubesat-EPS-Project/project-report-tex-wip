@@ -107,8 +107,31 @@ Specifications of Panasonic NCR 18650 GA Li-Ion cell:
 \end{itemize}
 \section[Battery Charger]{Battery Charger}
  The battery also needs a charger to regulate its current and voltage while charging.
- BQ25302, a synchronous Buck Battery Charger IC was selected and connected in external power path mode.\\
+ BQ25302, a synchronous Buck Battery Charger IC was selected and connected in external power path mode as given in the data-sheet.
+ \\
+ To preserve battery life, the charging current has to be limited. The charging current provided to the battery by BQ25302 IC can be limited by adjusting the resistor value at the ICHG pin according to the equation below:
+ \begin{equation}
+ 	I_{CHG} (A) = K_{ICHG} (A.\ohm) / R_{ICHG} (\ohm)
+ 	\label{eq:6.1}
+ \end{equation}
+ Where,
+ \begin{itemize}
+ 	\item $I_{CHG}$ is the charging current
+ 	\item $K_{ICHG}$ is the charge current ratio.  The $K_{ICHG}$ vs.
+ 	$I_{CHG}$ typical characteristic curve is shown in fig. \ref{fig:kichg}
+ 	\item $R_{ICHG}$ is the resistor value at the ICHG pin 
+ \end{itemize}
  
+  \begin{center}
+ 	\begin{figure}[h]
+ 		\centering
+ 		\includegraphics[width=\columnwidth]{kich.png}
+ 		\caption[$K_{ICHG}$ vs. $I_{CHG}$ characteristics]{\centering $K_{ICHG}$ vs. $I_{CHG}$ characteristics (Source: BQ25302 data-sheet)}
+ 		\label{fig:kichg}
+ 	\end{figure}
+ \end{center}
+ From the fig. \ref{fig:kichg} it is clear that the value of $K_{ICHG}$ should be 40200 limiting the charge current near to 1.2A. Thus, from equation \ref{eq:6.1} the calculated value of resistance at the ICHG pin is 33.5k\ohm.
+ \\
  
  Specifications and Operating Conditions of BQ25302:
 \begin{itemize}
