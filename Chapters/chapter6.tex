@@ -130,7 +130,7 @@ Specifications of Panasonic NCR 18650 GA Li-Ion cell:
  		\label{fig:kichg}
  	\end{figure}
  \end{center}
- From the fig. \ref{fig:kichg} it is clear that the value of $K_{ICHG}$ should be 40200 limiting the charge current near to 1.2A. Thus, from equation \ref{eq:6.1} the calculated value of resistance at the ICHG pin is 33.5k\ohm.
+ From the fig. \ref{fig:kichg}, it is clear that the value of $K_{ICHG}$ should be 40200 to limit the charging current near to 1.2A. Thus, from equation \ref{eq:6.1} the calculated value of resistance at the ICHG pin is 33.5k\ohm.
  \\
  
  Specifications and Operating Conditions of BQ25302:
@@ -241,11 +241,11 @@ The screw terminals are used to connect to the power inputs and outputs of the P
  
  \section{Micro-controller}
  The requirements of micro-controllers depend of the BUS, the other links as digital/analog outputs, the energy consumption, the voltage range and the memory.
- \\
+ \par
  The micro-controller has to handle the energy distribution of the entire CubeSat, and has to communicate with the OBC of CubeSat. Thus, it needs digital/analog outputs (for lines going to ADCS, Telemetry, OBC, battery , monitoring IC etc), UART for two-way communication between the micro-controller and the OBC and SPI to  send data of the battery level to the micro-controller.
- \\
+ \par
  The micro-controller should have low energy consumption, around the mirco ampere range for the “Active mode” and around the hundreds of nano ampere for the “Off mode”. It also should need sufficient memory storage to store the readings to provide it to OBC when requested. It should also independently take action during over-current, over voltage happenings, and also should control different power modes of the EPS.
- \\
+ \par
  Few considered options were Arduino, Raspberry Pi, TI micro-controllers, STM32 etc. Arduino has limited programming capabilities, and Raspberry Pi was too large for the need and also has high power consumption. STM32 was selected due to its wide range of capabilities, still maintaining the size and power constraints. It also has more community support which makes the programming easier.
- \\
+ \par
  STM32 is a ARM Cortex M4 32-bit micro-controller having a flash memory of 512 Kb. It can have upto 81 I/O ports with interrupt capabilities. It can have upto 78 fast I/Os upto 42 MHz, 3 I2C interfaces, 3 USARTs, 4 SPIs etc. We selected STM32401RE development board to test its capabilities, and one of its advantage is that, it can be programmed using Arduino IDE or even MATLAB, apart from its own programming IDE called STM32CUBE IDE.
