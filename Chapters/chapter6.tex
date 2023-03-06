@@ -35,15 +35,15 @@ Panels on opposite sides are connected in parallel.
 
 
 \section[MPPT Circuit]{Maximum Power Point Tracking Circuit}
-The MPPT converter connected to the solar panels increases the efficiency as the
-maximum power is transferred from the radiated energy that is on the solar panels.
+
+Maximum Power Point Tracking (MPPT) is a technique used in photovoltaic (PV) systems to optimize the power output of the PV panel. The goal of MPPT is to ensure that the PV panel operates at its maximum power point (MPP), which is the point on the current-voltage (I-V) curve of the panel where the panel can produce the maximum amount of power.
+
 As each solar panel has different temperatures and incident radiance angles, the
 Maximum Power Point (MPP) is also different. So each solar panel has a MPPT
 converter to assure that the maximum power available at the solar panels is
-transferred independently from their working power points.Since the peak power
+transferred independently from their working power points. Since the peak power
 point cannot be accurately predicted, many different algorithms exist for finding
-the best approximation. The MPPT can be implemented in the EPS using one of three algorithms:
-{\bf Perturb and Observe, Incremental Conductance, Constant Voltage}
+the best approximation. MPPT controllers use different algorithms such as {\bf Perturb and Observe (P&O), Incremental Conductance, and Fuzzy Logic} to track the MPP. These algorithms operate by incrementally changing the load impedance of the panel and measuring the corresponding change in voltage and current until the MPP is reached.
 
 The SPV1040 was chosen as the MPPT IC. It is a boost converter with duty ratio controlled by Perturb and Observe MPPT algorithm. The perturb and observe algorithm is based on monitoring either the voltage or the current supplied by the DC power source unit so that the PWM signal duty cycle is increased or decreased step-by-step according to the input power trend. This chip has inbuilt over-current protection and a cutoff mechanism if the solar panel connection is reverse-inserted to prevent damage to the IC and the external circuit.
 
