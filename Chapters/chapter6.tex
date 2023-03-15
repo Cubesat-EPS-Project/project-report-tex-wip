@@ -43,7 +43,7 @@ Maximum Power Point (MPP) is also different. So each solar panel has a MPPT
 converter to assure that the maximum power available at the solar panels is
 transferred independently from their working power points. Since the peak power
 point cannot be accurately predicted, many different algorithms exist for finding
-the best approximation. MPPT controllers use different algorithms such as {\bf Perturb and Observe (P&O), Incremental Conductance, and Fuzzy Logic} to track the MPP. These algorithms operate by incrementally changing the load impedance of the panel and measuring the corresponding change in voltage and current until the MPP is reached.
+the best approximation. MPPT controllers use different algorithms such as {\bf Perturb and Observe (P\&O), Incremental Conductance, and Fuzzy Logic} to track the MPP. These algorithms operate by incrementally changing the load impedance of the panel and measuring the corresponding change in voltage and current until the MPP is reached.
 
 The SPV1040 was chosen as the MPPT IC. It is a boost converter with duty ratio controlled by Perturb and Observe MPPT algorithm. The perturb and observe algorithm is based on monitoring either the voltage or the current supplied by the DC power source unit so that the PWM signal duty cycle is increased or decreased step-by-step according to the input power trend. This chip has inbuilt over-current protection and a cutoff mechanism if the solar panel connection is reverse-inserted to prevent damage to the IC and the external circuit.
 
@@ -56,9 +56,9 @@ Specifications of  SPV1040:
 	\item Efficiency: 95\%
 \end{itemize}
 The MPPT circuit schematic is shown below:
- 	\begin{figure}[ht]
+ 	\begin{figure}[h]
 	\centering
-	\includegraphics[width=\columnwidth]{mppt.pdf}
+	\includegraphics[width=\columnwidth]{IMGS/MpptDemoBoard.pdf}
 	\caption{MPPT circuit with SPV1040}
 	\label{fig:mpptsch}
 \end{figure}
@@ -107,8 +107,25 @@ Specifications of Panasonic NCR 18650 GA Li-Ion cell:
 \end{itemize}
 \section[Battery Charger]{Battery Charger}
  The battery also needs a charger to regulate its current and voltage while charging.
- BQ25302, a synchronous Buck Battery Charger IC was selected and connected in external power path mode as given in the data-sheet.
+ BQ25302, a synchronous Buck Battery Charger IC was selected and connected in external power path mode as given in the data-sheet. The BQ25302 is a highly-integrated standalone
+ switch-mode battery charger for single cell Li-Ion batteries. It supports input voltage in the range of 4.1V to 6.2V and maximum charging current of 2A. It has a very low quiescent current of 200nA to conserve battery during idle.
+ It detects the charge
+ voltage setting at startup and charges the battery in four phases: battery short, pre - conditioning, constant
+ current, and constant voltage. \\
+ 
+ The charger incorporates various safety features for battery charging and system
+ operations, including battery temperature monitoring based on negative temperature coefficient (NTC)
+ thermistor, charge safety timer, input over-voltage and over-current protections, as well as battery over-voltage
+ protection. Thermal regulation regulates charge current to limit die temperature during
+ high power operation or high ambient temperature conditions.
  \\
+ 
+ The STAT pin output reports charging status and fault conditions. It is connected to REGN via a current
+ limiting resistor and LED. Blinking LED indicated a fault condition.\\
+ 
+ The battery charge voltage setting is done by the VSET pin. As the Panasonic NCR 18650 GA Li-Ion cell with a charge voltage of 4.2V was selected the VSET pin was shorted to ground to set the battery charge voltage to 4.2V.
+ 
+ 
  To preserve battery life, the charging current has to be limited. The charging current provided to the battery by BQ25302 IC can be limited by adjusting the resistor value at the ICHG pin according to the equation below:
  \begin{equation}
  	I_{CHG} (A) = K_{ICHG} (A.\ohm) / R_{ICHG} (\ohm)
@@ -133,6 +150,9 @@ Specifications of Panasonic NCR 18650 GA Li-Ion cell:
  From the fig. \ref{fig:kichg}, it is clear that the value of $K_{ICHG}$ should be 40200 to limit the charging current near to 1.2A. Thus, from equation \ref{eq:6.1} the calculated value of resistance at the ICHG pin is 33.5k\ohm.
  \\
  
+ The IC is connected in an external power path configuration by connecting an external PFET for the battery. The PFET turns on when there is no external supply available from the solar panels and the system has to be powered by the battery. It is also useful if the system has to be powered ON when the battery is over-discharged or dead. 
+ 
+ 
  Specifications and Operating Conditions of BQ25302:
 \begin{itemize}
  	\item Input Voltage: Upto 5V
@@ -147,7 +167,7 @@ Specifications of Panasonic NCR 18650 GA Li-Ion cell:
 The Battery Charger circuit schematic is shown below:
 \begin{figure}[ht]
 	\centering
-	\includegraphics[width=\columnwidth]{batt2.pdf}
+	\includegraphics[width=\columnwidth]{IMGS/charg.pdf}
 	\caption{Schematic of Battery Charger circuit with BQ25302}
 	\label{fig:battch}
 \end{figure}
@@ -159,7 +179,10 @@ for the charging voltage and the voltages of the satellite's subsystems. In most
 subsystems, the need for a specific voltage requires a regulation of either a step-up
 or a step-down of the supplied voltage. It can be done by buck
 convertor(step-down) and boost converter(step-up).\\
-TPS62203 was selected as the buck converter to provide step down voltage of the DC bus to supply the 3.3V loads. It is a high-efficiency synchronous step-down converter with up to 95\% efficiency.\\
+TPS62203 was selected as the buck converter to provide step down voltage of the DC bus to supply the 3.3V loads. It is a high-efficiency synchronous step-down converter with up to 95\% efficiency. It operates with a 1MHz fixed frequency (PWM) at moderate loads to heavy load currents and operates with pulse
+frequency modulation (PFM) at light load currents.\\
+
+It has a shutdown quiescent current of typically 0.1 {$\mu$}A
 
  Specifications and Operating Conditions of TPS62203:
 \begin{itemize}
@@ -204,7 +227,7 @@ LTC4361-2 is selected as the over voltage and over current protection IC. It con
  \begin{center}
  \begin{figure}[h]
  	\centering
- 	\includegraphics[width=\columnwidth]{bubowithprotn.pdf}
+ 	\includegraphics[width=\columnwidth]{IMGS/1.pdf}
  	\caption{\centering Schematic of Buck and Boost circuit with Protection and Voltage and Current Measurement ICs}
  	\label{fig:bubo2}
  \end{figure}
@@ -219,25 +242,37 @@ The screw terminals are used to connect to the power inputs and outputs of the P
  	\item SCLSDA2 pins: I2C connection to micro-controller relaying measured parameters of 5V bus by U3 (LTC2990) 
  	\item SCLSDA3 pins: I2C connection to micro-controller relaying measured parameters of input bus ($V_{in}$) by U1 (LTC2990)
  \end{itemize}
+\newpage
 \subsection{PCB Layout}
  A double layer PCB was designed from the schematic (Ref. Fig. 8.4). The second layer was used as the GROUND plane. The schematic and PCB design was done in KiCad EDA. 
  
-  \begin{figure}[H]
+  \begin{figure}[h]
  	\centering
- 	\includegraphics[width=\columnwidth]{bubopcb.png}
+ 	\includegraphics[width=0.7\columnwidth]{IMGS/1 pcb.png}
  	\caption{\centering Buck and Boost circuit PCB - All Copper Layers only}
  	\label{fig:bubopcb}
  \end{figure}
  
-   \begin{figure}[H]
+   \begin{figure}[h]
  	\centering
- 	\includegraphics[width=\columnwidth]{bubopcb3d.png}
+ 	\includegraphics[width=0.7\columnwidth]{IMGS/1 3d.png}
  	\caption{\centering Buck and Boost circuit PCB - 3D Model}
  	\label{fig:bubopcb3d}
  \end{figure}
-
 \pagebreak
- \justifying
+  \begin{figure}[h]
+	\centering
+	\includegraphics[width=0.6\columnwidth]{IMGS/charg pcb.png}
+	\caption{\centering Battery Charger circuit PCB - All Copper Layers only}
+	\label{fig:chargpcb}
+\end{figure}
+\begin{figure}[h]
+	\centering	\includegraphics[width=0.7\columnwidth]{IMGS/charg 3d_upscayl_4x_ultrasharp.png}
+	\caption{\centering Battery Charger circuit PCB - 3D Model}
+	\label{fig:chargpcb3d}
+\end{figure}
+
+\pagebreak \justifying
  
  \section{Micro-controller}
  The requirements of micro-controllers depend of the BUS, the other links as digital/analog outputs, the energy consumption, the voltage range and the memory.

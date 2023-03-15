@@ -2,10 +2,12 @@
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=\columnwidth]{diag1.pdf}
+	\includegraphics[width=\columnwidth]{IMGS/diag1.pdf}
 	\caption{System Architecture of the CubeSat EPS}
 	\label{fig:arch}
 \end{figure} 
+The electrical power system (EPS) is a critical component of CubeSat architecture, as it provides power to all the satellite's systems and payloads. EPS architecture of a CubeSat is designed to be highly efficient and reliable, while minimizing the mass and power consumption of the components. The EPS must be carefully designed and tested to ensure that it can withstand the harsh space environment and meet the mission requirements.\\
+
 
 The CubeSat is equipped with six solar panels on each side. To ensure that the solar panels operate at their most efficient points, the solar panels are connected to MPPT ICs such that the solar panels on the opposite sides are connected to single MPPT IC. Since only one of the opposite sides of the cube is irradiated at any time, the MPPT of two solar panels can be achieved using a single IC. This arrangement reduces the number of MPPT ICs required by the system. The MPPT runs a constant voltage algorithm and delivers 5V at the bus. 
 \\
