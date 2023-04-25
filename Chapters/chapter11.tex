@@ -1,0 +1,32 @@
+\justifying
+\chapter{Appendix}
+
+\section{Calculations}
+
+\subsection{SPV1040} 
+
+Component Values
+These are constraints or known values for the calculations
+$F_{sw}$ = 70kHz - 130kHz : Typ. 100kHz \\
+$V_{IN\_\: rp\_\: max}$ = 1V \\
+$I_{SC}$ = 0.52A (short circuit current)\\
+$I_{MP}$ = 0.504A (current at MPP)\\
+$V_{SC}$ = 2.7V (short circuit voltage) \\
+$V_{MP}$ = 2.41V (voltage at MPP)\\
+$T_{MPP}$ = 1ms \: (tracking time) \\
+$R_{MPPTset}$ = $1k\Omega$  \\
+$V_{OUT\_\: rp\_\: max}$ = 0.01V (maximum output voltage ripple)\\
+$V_{OUT\_\: max}$ = 5.2V (desired maximum output voltage)\\
+$I_{OUT\_\: max} $= 1.8A (limit of spv1040 IC)\\ \\
+
+
+
+INPUT CAPACITOR\\
+$C_{IN} \geq \frac{I_{SC}}{F_{SW}*V_{IN\_\: rp\_\: max}}$\\
+= $\frac{1A}{100kHz*1V}$\\
+= 10$\mu$ F\\ \\
+INPUT VOLTAGE SENSING CAPACITOR\\
+$C_{MPPTset} \leq T_{MPP}*\frac{1}{R_{MPPTset}}$ \\
+
+to be continued....
+

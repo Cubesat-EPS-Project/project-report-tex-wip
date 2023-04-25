@@ -37,15 +37,23 @@ Panels on opposite sides are connected in parallel.
 \section[MPPT Circuit]{Maximum Power Point Tracking Circuit}
 
 Maximum Power Point Tracking (MPPT) is a technique used in photovoltaic (PV) systems to optimize the power output of the PV panel. The goal of MPPT is to ensure that the PV panel operates at its maximum power point (MPP), which is the point on the current-voltage (I-V) curve of the panel where the panel can produce the maximum amount of power.
-
+\\ \\
 As each solar panel has different temperatures and incident radiance angles, the
 Maximum Power Point (MPP) is also different. So each solar panel has a MPPT
 converter to assure that the maximum power available at the solar panels is
 transferred independently from their working power points. Since the peak power
 point cannot be accurately predicted, many different algorithms exist for finding
 the best approximation. MPPT controllers use different algorithms such as {\bf Perturb and Observe (P\&O), Incremental Conductance, and Fuzzy Logic} to track the MPP. These algorithms operate by incrementally changing the load impedance of the panel and measuring the corresponding change in voltage and current until the MPP is reached.
-
+\\ \\
 The SPV1040 was chosen as the MPPT IC. It is a boost converter with duty ratio controlled by Perturb and Observe MPPT algorithm. The perturb and observe algorithm is based on monitoring either the voltage or the current supplied by the DC power source unit so that the PWM signal duty cycle is increased or decreased step-by-step according to the input power trend. This chip has inbuilt over-current protection and a cutoff mechanism if the solar panel connection is reverse-inserted to prevent damage to the IC and the external circuit.
+\\ \\
+The MPPT IC can only handle 1.8A of input current. Also, the input voltage of each MPPT must be much less than the desired output voltage for them to function properly. Depending on the configuration, the number of MPPT ICs was calculated to be 6.
+\\ \\
+Each side of cubesat consists of two 2.4V cells, each cells giving a maximum current output of 500mA for each MPPT, which is well below the maximum current the IC can handle. One cell from opposite sides are connected to its own MPPT, which is set to boost to 5.2V. The MPPTs are then connected in parallel.
+\\ \\
+Connecting multiple regulators in parallel can sometimes cause problems if one source is outputting a slightly smaller or larger voltage than the others. In most cases, the use of ballast resistors solves this problem. The footprint for a 25mohm ballast resistor will be chosen to be included in series with the output of each MPPT.\\
+
+
 
 Specifications of  SPV1040:
 	\begin{itemize}

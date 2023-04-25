@@ -16,6 +16,76 @@ power diagnostics, engage redundant circuitry and to communicate with the On
 Board Computer. The software also employs four operating modes: Initialization
 mode, Safe mode, Normal mode and Low Power Mode.
 \\
+\section{Requirements of EPS}
+
+\subsection{Introduction} 
+
+The first step before beginning the design of the EPS is to know exactly what our goals and our constraints are. This is the subject of this section.
+\\ \\
+There are constraints due to space environment. The EPS must withstand vacuum and wide ranges of temperatures and radiations. There are constraints linked to the launch, like accelerations, vibrations, and rules for the CubeSats in the launch vehicle. Finally, there are constraints due to the construction of CubeSat itself. The dimensions of the PCB and available volumes should be specified. 
+\\ \\
+The desired functionalities also guide the design. The EPS must produce enough energy to supply the CubeSat. Enough energy has to be stored to supply the satellite during the period of eclipse. The EPS must provide several power outputs with stabilized voltages. The constraints will also guide the validation tests applied to the prototypes. Since our objective is to make demo boards, all these constraints may not be fully follower while designing. 
+
+\subsection{Constraints} 
+
+\subsubsection{Vacuum}
+
+The satellite is expected to be released in an elliptical orbit with an altitude between 350 and 1,000km. At such altitudes, the atmosphere pressure can be neglected and considered as vacuum. Therefore, all components used in the satellite must withstand vacuum. The most sensitive component of the EPS is the batteries. The two threats of vacuum are:
+\begin{itemize}
+\item Deformations due to mechanical constraint of vacuum
+\item Out gassing.
+\end{itemize}
+
+\subsubsection{Radiations}
+
+Charged particles of solar wind, electrons, and protons, are captured by the earth magnetic field. They form the radiations belts, also known as the Van-Allen belts. There are two belts:
+\begin{itemize}
+\item The inner belt, between 1,000 and 15,000 km, containing high concentrations of energetic protons with energies exceeding 100 MeV and electrons in the range of hundreds of keV.
+\item The outer belt, extending till 50,000km, and consisting mainly of high energy electrons (from 0.1 to 10 MeV).
+\end{itemize}
+
+Spacecrafts need to be protected against radiations, especially if they go though the radiation belts. Trapped particles in the radiation belts and cosmic rays can cause “Single Event Phenomena” (SEP) within semiconductor devices. There are three different types of SEP:
+\\ \\
+\begin{itemize}
+\item The Single-Event Upset (SEU)
+\begin{itemize}
+\item This is when a high energy particle hits a logic device and changes digitally stored data or causes a gate to open or close at the wrong time.
+\end{itemize}
+\item The Single-Event Latch up (SEL)
+\begin{itemize}
+\item The SEL is when a high energy particle directly damages the device. It can, however, be corrected if the SEL is detected and the power to the device quickly turned off, then turned back on.
+\end{itemize}
+\item The Single-Event Burnout (SEB)
+\begin{itemize}
+\item This is the case where the device is destroyed.
+\end{itemize}
+
+\end{itemize}
+
+
+The radiation dose is estimated to be more than 105[rad]. A protection against SEL can be provided to the subsystems with current-limiter circuits. There is no particular protection against SEU and SEB except reducing the effect of the radiations inside the satellite with a layer of shielding aluminium (less than 2.104[rad] with 2mm of aluminium). There are components designed and/or tested to be more resistant to radiations. Such components should be used in the more critical systems of the EPS.
+\\ \\
+\subsubsection{Temperature}
+
+The temperatures in space, when the satellite is turned on, will essentially depend of the thermal design. The temperature ranges are not the same everywhere in the satellite. Thermal simulations give an idea of the temperature at different points of the CubeSat. The external temperature will vary the most (from $-33^{o}C$ to $+40^{o}C)$, the temperature of the EPS will stay between $-22^{o}C$ and $+37^{o}C$, and the temperature of batteries between $-22^{o}C$ and $+37^{o}C$. The EPS must thus be able to work within these ranges.
+
+\begin{itemize}
+\item Solar cells must be selected so that they are able to work in the predicted range of $-33^{o}C$ to $+40^{o}C$.
+\item The electronics on the EPS must be designed to be able to operate from $-22^{o}C$ to $+37^{o}C$ (PCB Temp). Considering wider ranges, components with an operating temperature range of at least  $40^{o}C$ to $+85^{o}C$ can be selected as ”absolute maximum rating”.
+\item Lithium-Polymer batteries can withstand 0 to $+45^{o}C$ during charge and $-20^{o}C$ to $+60^{o}C$ during discharge (but with a significant loss of capacity under $0^{o}C)$. A solution must be found to maintain the batteries in these ranges of temperature.
+\end{itemize}
+
+\subsubsection{Vibrations and accelerations during launch} 
+
+The CubeSat will be subjected to vibrations during the launch.The effects of acceleration during launch are not to be underestimated. The CubeSat has to be able to withstand an acceleration of 15g, even if it will probably be lower in reality. Special attention must be paid to the fixation of heavy components. Also, components could be damaged by the bending of the PCB under vibrations and accelerations. Automotive components will be chosen whenever possible.
+
+\subsubsection{Temperatures during launch} 
+
+The launch vehicle will pass through several atmospheric layers with specific temperatures. Inside the launch vechile, the CubeSat will endure temperatures of $-40^{o}C to 80^{o}C$ during launch. Components of the EPS have to be able to withstand such temperatures during storage (the CubeSat is inactive during launch). Components with a working temperature range of $-40^{o}C to 85^{o}C$ should not have any problems.
+The batteries are still the most sensible component. Their storage temperature should stay between $-20^{o}C and 60^{o}C$. A passive solution must be found to protect them during launch. Thermal insulation and thermal inertia will certainly help.
+
+
+
 
 \section[Components of EPS]{Components of EPS}
 The EPS of a CubeSat can be designed with many different architectures, but some
