@@ -53,14 +53,50 @@ The EPS also includes other components such as a power switch, a fuse, and a bat
 The design of the EPS depends on the specific mission requirements and the available resources, and CubeSat developers must carefully balance the power budget to ensure that the CubeSat can operate reliably and efficiently throughout its mission.
 
 \section{Objective}
-
 %To design and implement a fully autonomous power generation, storage and distribution
 %system for a CubeSat
 The aim of this project is to determine requirements for a typical CubeSat Electrical Power System (EPS) and develop a working prototype of the EPS for a CubeSat.
+\\ \\
+  This EPS will be used as the prototype for the BARTOSAT cubeSat developed by the students of GEC, Barton Hill as a part of the Satellite Research Center of the college. The prototype will then go through various iterations, improving the design to meet all the requirements of other subsystems which are currently under development and also to make it fully capable to work in the space environment.\\
+
+\subsection{The Satellite Research Center, GECB}
+\justifying
+  The Satellite Research Center of Government Engineering College, Barton Hill, is a facility dedicated to conducting research in the field of satellite technology and to help students get an exposure to space technologies in general. As a part of this, a student project was initiated, aimed at developing a 1U CubeSat named ‘Bartosat’, which will be designed to carry a LoRa module as the payload. 
+ \\ \\
+   Every phase of designing, building and testing of the CubeSat has been carried out by different student teams from various departments. The payload will test the possibilities of space-to-ground communication using LoRa technology, which can lead to low cost, low-power space communication.
+ \\
 
 \section{Literature Review}
 \justifying
 The EPS is a critical component of a CubeSat as it powers all the subsystems in the satellite. There are different EPS architectures of based on DC bus regulation and interface of PV panels [1].
+\\ \\
+The main challenge for the development of CubeSats is to fit all the necessary equipment within the standard frame size while meeting the weight constraints. The EPS design is crucial for the successful CubeSats mission, which needs to consider several factors such as mission duration, orbit altitude, inclination angle, size of PV panels and its arrangement, load profile, volume and weight limits, radiation effects, overall efficiency, simplicity of control, component count, flexibility in battery configuration, reliability, and fault-tolerant capability. 
+\\ \\
+One of the important steps in EPS design is the selection of most suitable EPS architecture. The different types of CubeSat EPS architectures are shown in Figure. 
+\\ \\
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\columnwidth]{IMGS/EPSarchitectures.png}
+	\caption{CubeSat EPS architectures}
+	\label{fig:arch}
+\end{figure} 
+\\ \\
+Based on the interfacing of PV panels, the EPS architectures are classified as direct energy transfer (DET) and peak power tracking (PPT) architectures. 
+\\ \\
+In the DET architecture, the PV panels are directly connected to the battery and/or load equipment via diodes. It also uses a shunt regulator in parallel with the PV panels to absorb excess power when the battery reaches full-charge condition.
+\\ \\
+ In the PPT architecture, the PV panels are interfaced with a power electronic converter to extract the maximum power from the panels under widely varying operating conditions such as solar irradiation, PV panel temperature, and inclination angle. 
+ \\ \\
+The DET architecture requires matching of PV panel characteristics and the dc-bus voltage to generate maximum possible power which is not straightforward in the space missions. Therefore, the majority of CubeSats utilize the PPT architecture to maximize the solar energy harvest, which has limited PV panel capacity and storage capacity due to strict volume and weight constraints. 
+\\ \\
+The PPT architectures are further classified based on dc-bus voltage regulation: unregulated dc-bus, regulated dc-bus; and sun-regulated dc-bus. 
+\\ \\
+The unregulated dc-bus EPS architecture has the battery terminals directly connected to dc-bus. When the battery voltage reaches its upper limit, the MPPT converter is operated in voltage regulation mode to avoid further charging of the battery. 
+\\ \\
+The regulated dc-bus EPS architecture interfaces the battery with a dc–dc converter to maintain the dc-bus voltage at the predefined value. This architecture enables the operation of CubeSat at higher dc-bus voltage so that conduction and ohmic losses are reduced. 
+\\ \\
+In the sun regulated dc-bus EPS architecture, the dc-bus voltage is maintained at reference value only during the sunlit period. During the eclipse period, the battery gets connected to the dc-bus via a diode to supply the loads.
+\\ \\
 
  This project focuses on the design of an EPS with a regulated DC bus and MPPT tracking.
 %
