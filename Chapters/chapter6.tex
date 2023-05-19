@@ -70,6 +70,26 @@ The MPPT circuit schematic is shown below:
 	\caption{MPPT circuit with SPV1040}
 	\label{fig:mpptsch}
 \end{figure}
+\subsection[mpptpcb]{PCB Layout}
+The MPPT PCB is shown below:
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\columnwidth]{IMGS/MpptDemopcb.jpg}
+	\caption{MPPT PCB Design}
+	\label{fig:mpptpcb}
+\end{figure}
+
+The MPPT 3D is shown below:
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\columnwidth]{IMGS/MpptDemo3d.jpg}
+	\caption{MPPT 3D}
+	\label{fig:mppt3d}
+\end{figure}
+
+
+
+
 
 \section[Battery]{Battery}
 The most popular types of batteries use the following materials: Nickel Cadmium
@@ -150,7 +170,7 @@ Specifications of Panasonic NCR 18650 GA Li-Ion cell:
   \begin{center}
  	\begin{figure}[h]
  		\centering
- 		\includegraphics[width=\columnwidth]{kich.png}
+ 		\includegraphics[width=0.7\columnwidth]{kich.png}
  		\caption[$K_{ICHG}$ vs. $I_{CHG}$ characteristics]{\centering $K_{ICHG}$ vs. $I_{CHG}$ characteristics (Source: BQ25302 data-sheet)}
  		\label{fig:kichg}
  	\end{figure}
@@ -173,12 +193,32 @@ Specifications of Panasonic NCR 18650 GA Li-Ion cell:
  \end{itemize}
 
 The Battery Charger circuit schematic is shown below:
-\begin{figure}[ht]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\columnwidth]{IMGS/charg.pdf}
 	\caption{Schematic of Battery Charger circuit with BQ25302}
 	\label{fig:battch}
 \end{figure}
+
+  \begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\columnwidth]{IMGS/charg pcb.jpg}
+	\caption{\centering Battery Charger circuit PCB - All Copper Layers only}
+	\label{fig:chargpcb}
+\end{figure}
+\begin{figure}[H]
+	\centering	\includegraphics[width=0.7\columnwidth]{IMGS/charg 3d.png}
+	\caption{\centering Battery Charger circuit PCB - 3D Model}
+	\label{fig:chargpcb3d}
+\end{figure}
+
+\pagebreak \justifying
+
+
+
+
+
+
 
 
 \section[Switching Regulators]{Buck and Boost Converters}
@@ -250,37 +290,26 @@ The screw terminals are used to connect to the power inputs and outputs of the P
  	\item SCLSDA2 pins: I2C connection to micro-controller relaying measured parameters of 5V bus by U3 (LTC2990) 
  	\item SCLSDA3 pins: I2C connection to micro-controller relaying measured parameters of input bus ($V_{in}$) by U1 (LTC2990)
  \end{itemize}
-\newpage
+
+
 \subsection{PCB Layout}
  A double layer PCB was designed from the schematic (Ref. Fig. 8.4). The second layer was used as the GROUND plane. The schematic and PCB design was done in KiCad EDA. 
  
   \begin{figure}[h]
  	\centering
- 	\includegraphics[width=0.7\columnwidth]{IMGS/1 pcb.png}
+ 	\includegraphics[width=0.7\columnwidth]{IMGS/1 pcb.jpg}
  	\caption{\centering Buck and Boost circuit PCB - All Copper Layers only}
  	\label{fig:bubopcb}
  \end{figure}
  
-   \begin{figure}[h]
+   \begin{figure}[H]
  	\centering
- 	\includegraphics[width=0.7\columnwidth]{IMGS/1 3d.png}
+ 	\includegraphics[width=0.7\columnwidth]{IMGS/1 3d.jpg}
  	\caption{\centering Buck and Boost circuit PCB - 3D Model}
  	\label{fig:bubopcb3d}
  \end{figure}
 \pagebreak
-  \begin{figure}[h]
-	\centering
-	\includegraphics[width=0.6\columnwidth]{IMGS/charg pcb.png}
-	\caption{\centering Battery Charger circuit PCB - All Copper Layers only}
-	\label{fig:chargpcb}
-\end{figure}
-\begin{figure}[h]
-	\centering	\includegraphics[width=0.7\columnwidth]{IMGS/charg 3d_upscayl_4x_ultrasharp.png}
-	\caption{\centering Battery Charger circuit PCB - 3D Model}
-	\label{fig:chargpcb3d}
-\end{figure}
 
-\pagebreak \justifying
  
  \section{Micro-controller}
  The requirements of micro-controllers depend of the BUS, the other links as digital/analog outputs, the energy consumption, the voltage range and the memory.
@@ -292,3 +321,28 @@ The screw terminals are used to connect to the power inputs and outputs of the P
  Few considered options were Arduino, Raspberry Pi, TI micro-controllers, STM32 etc. Arduino has limited programming capabilities, and Raspberry Pi was too large for the need and also has high power consumption. STM32 was selected due to its wide range of capabilities, still maintaining the size and power constraints. It also has more community support which makes the programming easier.
  \par
  STM32 is a ARM Cortex M4 32-bit micro-controller having a flash memory of 512 Kb. It can have upto 81 I/O ports with interrupt capabilities. It can have upto 78 fast I/Os upto 42 MHz, 3 I2C interfaces, 3 USARTs, 4 SPIs etc. We selected STM32401RE development board to test its capabilities, and one of its advantage is that, it can be programmed using Arduino IDE or even MATLAB, apart from its own programming IDE called STM32CUBE IDE.
+ 
+ 
+ \pagebreak
+ \section{List of Components}
+ \begin{table}[h]
+ 	\begin{center}
+ 		\begin{tabular}{|l|l|l|}
+ 			\hline
+ 			{\bf Sl. No.} & {\bf Component} & {\bf Description} \\ \hline
+ 			1 & TPS62203 & Buck Converter IC \\ \hline
+ 			2 & LTC3426 & Boost Converter IC \\ \hline
+ 			3 & BQ25302 & Battery Charger IC \\ \hline
+ 			4 & Panasonic NCR 18650 GA & Battery \\ \hline
+ 			5 & SPV1040T & MPPT \\ \hline
+ 			6 & TJ Solar Cell 3G30C & Solar Cell \\ \hline
+ 			7 & STM 32 F401RE & Micro-controller \\ \hline
+ 			8 & Resistors &  \\ \hline
+ 			9 & Capacitors &  \\ \hline
+ 			10 & Inductors &  \\ \hline
+ 			11 & PCB &  \\ \hline
+ 		\end{tabular}
+ 		\caption{Components Required}
+ 		\label{table:3}
+ 	\end{center}
+ \end{table}
