@@ -197,7 +197,7 @@ The output load regulation test ensures the DC/DC converter output voltage stays
 \\ \\
 \hspace*{5cm}$L_{r}$ = $\left | \frac{V_{oio}-V_{oim}}{V_{onom}} \right | \times 100$
 \\ \\
-where:
+Where:
 $V_{oio}$ = Vout at Iout max; 
 $V_{oim}$ = Vout at Iout min; and
 $V_{onom}$ = Vout nominal.
@@ -400,18 +400,22 @@ Vin and Iin = converter input voltage and current.
 This test can also capture the efficiency at various power levels. It’s common to plot the data to show efficiency versus output-current.
 
 \section{Battery Charger Testing}
+ The battery charger IC selected was BQ25302 which is a Li-ion constant current - constant voltage (CCCV) charger. With the constant current function pumping current into the battery, its voltage obviously rises. And as soon as it reaches the set charging voltage of the IC the current
+falls underneath the constant current limit and thus it enters the constant voltage mode at which point the battery charges up to its max capacity where almost no current is flowing any more. This method is used to prevent overcharging of batteries.
+
+In this circuit, the charging voltage was set at 4.2V as per the data-sheet of the battery. From fig. \ref{fig:cccv}, it is clear that the battery charges in constant current mode and its voltage rises to approximately 4.2V. Then the charger switches to constant voltage mode and the charging current reduces to zero eventually.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\columnwidth]{IMGS/Battery CC CV.pdf}
 	\caption{Battery charger demonstrating CC and CV charging}
-	\label{fig:arch}
+	\label{fig:cccv}
 \end{figure}
-\\ \\
+Fig. \ref{fig:chargin'} shows a 18650 Li-Ion battery being charged upto 100\%.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\columnwidth]{IMGS/Battery Charge Cycle.pdf}
 	\caption{Variation of charging voltage and current}
-	\label{fig:arch}
+	\label{fig:chargin'}
 \end{figure}
 \section{MPPT Module Testing}
 
