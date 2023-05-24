@@ -77,6 +77,34 @@ $V_{omax}$ = Vout at Vin max;
 $V_{omin}$ = Vout at Vin min; and
 $V_{onom}$ = Vout nominal.
 \\ \\
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+Vin (Volt) & Vout (Volt) & Iin (A) & Efficiency \\ \hline
+3.6        & 3.25        & 0.19    & 95.02924   \\ \hline
+4          & 3.25        & 0.17    & 95.58824   \\ \hline
+4.2        & 3.21        & 0.17    & 89.91597   \\ \hline
+4.6        & 3.25        & 0.16    & 88.31522   \\ \hline
+5          & 3.22        & 0.15    & 85.86667   \\ \hline
+5.5        & 3.2         & 0.13    & 89.51049   \\ \hline
+6          & 3.2         & 0.12    & 88.88889   \\ \hline
+\end{tabular}
+\caption{Buck output line regulation at full load (200mA)}
+\label{table:4}
+\end{table}
+\\ \\
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+Vin            & Operating condition \\ \hline
+1.4            & On                  \\ \hline
+\textless{}1.4 & Shutdown            \\ \hline
+\end{tabular}
+\caption{Boost output regulation at no load}
+\label{table:4}
+\end{table}
 \subsection{Output load regulation} 
 The output load regulation test ensures the DC/DC converter output voltage stays within the specified regulation tolerance. Here, the change in output voltage is recorded while load is varied from minimum to maximum current. This delta voltage is used to calculate the percentage of deviation which is compared to the specified load regulation limits. Load regulation $L_{r}$ is calculated as a percentage from the equation:
 \\ \\
@@ -87,6 +115,48 @@ $V_{oio}$ = Vout at Iout max;
 $V_{oim}$ = Vout at Iout min; and
 $V_{onom}$ = Vout nominal.
 \\ \\
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+Iout (mA) & Vout (Volt) & Iin(A) & Efficiency \\ \hline
+50        & 4.94        & 0.07   & 84.01361   \\ \hline
+100       & 4.93        & 0.15   & 78.25397   \\ \hline
+150       & 4.9         & 0.2    & 87.5       \\ \hline
+200       & 4.87        & 0.31   & 74.80799   \\ \hline
+250       & 4.87        & 0.39   & 74.32845   \\ \hline
+300       & 4.86        & 0.47   & 73.86018   \\ \hline
+350       & 4.86        & 0.57   & 71.05263   \\ \hline
+400       & 4.86        & 0.66   & 70.12987   \\ \hline
+450       & 4.85        & 0.76   & 68.37406   \\ \hline
+500       & 4.84        & 0.87   & 66.22879   \\ \hline
+550       & 4.81        & 0.96   & 65.6126    \\ \hline
+600       & 4.76        & 1.07   & 63.5514    \\ \hline
+650       & 4.62        & 1.13   & 63.27434   \\ \hline
+700       & 4.45        & 1.19   & 62.32493   \\ \hline
+750       & 4.38        & 1.21   & 64.63991   \\ \hline
+800       & 4.1         & 1.26   & 61.98035   \\ \hline
+\end{tabular}
+\caption{Boost load regulation at 4.2V Vin}
+\label{table:4}
+\end{table}
+\\ \\
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+Iout (mA) & Vout (Volt) & Iin (A) & Efficiency \\ \hline
+50        & 3.32        & 0.06    & 76.85185   \\ \hline
+100       & 3.28        & 0.11    & 82.82828   \\ \hline
+150       & 3.28        & 0.16    & 85.41667   \\ \hline
+200       & 3.27        & 0.21    & 86.50794   \\ \hline
+250       & 3.2         & 0.27    & 82.30453   \\ \hline
+300       & 3.22        & 0.32    & 83.85417   \\ \hline
+350       & 3.21        & 0.38    & 82.12719   \\ \hline
+\end{tabular}
+\caption{Buck load regulation at 3.6V input}
+\label{table:4}
+\end{table}
 \subsection{Output transient response deviation and time}
 
  This test determines how well the output voltage responds to a sudden change in output current. The measurement includes the maximum output voltage deviation and the time it takes for the voltage to recover to its regulated output nominal voltage tolerance.
@@ -133,9 +203,25 @@ This test can also capture the efficiency at various power levels. It’s common
 
 \section{Battery Charger Testing}
 
+\section{MPPT Module Testing}
 
-
-	
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+Vin (Volt) & Iin (A) & Vout (Volt) & Efficiency \\ \hline
+2          & 0.4     & 3.55        & 88.75      \\ \hline
+2.5        & 0.35    & 3.9         & 89.14286   \\ \hline
+3          & 0.29    & 4.19        & 96.32184   \\ \hline
+3.3        & 0.28    & 4.38        & 94.80519   \\ \hline
+3.6        & 0.27    & 4.55        & 93.6214    \\ \hline
+4          & 0.26    & 4.8         & 92.30769   \\ \hline
+4.2        & 0.25    & 4.95        & 94.28571   \\ \hline
+4.6        & 0.24    & 5.11        & 92.57246   \\ \hline
+\end{tabular}
+\caption{MPPT output line regulation at half load (200mA)}
+\label{table:4}
+\end{table}	
 
 
 
