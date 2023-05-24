@@ -3,65 +3,65 @@
 \chapter{Testing}
 
 \section{Variable DC load using MOSFET}
-To test the efficiency of the demo boards, different tests like line regulation, load regulation etc have to be conducted. For line regulation, at a certain constant load, we should create a voltage values table and get the efficiency curve. For that, we need different values of resistance (load). Instead of using resistance, we could use a MOSFET for simulating various load conditions. Since we doesn’t need any higher loads to test the demo boards, a circuit that simulate a load precisely for values from 0 to 2A and with a precision of 0.01A will do the job.
+To test the efficiency of the demo boards, different tests like line regulation, load regulation etc have to be conducted. For line regulation, at a certain constant load, we should create a voltage values table and get the efficiency curve. For that, we need different values of resistance (load). Instead of using resistance, we could use a MOSFET for simulating various load conditions. Since we don’t need any higher loads to test the demo boards, a circuit that simulate a load precisely for values from 0 to 2A and with a precision of 0.01A will do the job.
 \\ \\
-
-The working of the circuit is simple. The MOSFET is controlled by voltage on its gate. Till the voltage between gate and source (Vgs) is not higher than a certain value called Vth, the MOSFET is disabled, so no current will be flowing between drain and source. After Vth, the MOSFET starts a current flow and the value of this current will get higher as Vgs increases till a certain value where the MOSFET is fully on. So, by varying the voltage at the gate we change the current flow and by that we can simulate the load value. 
-\\ \\
+IRFZ44 is the MOSFET used to implement this circuit. It has a Vds on voltage of 10V. A potentiometer is used to control the gate source voltage and the circuit to be tested is connected between the drain and source terminals. By varying the gate voltage, the drain source conduction can be controlled. The drain source voltage and current increases proportionally with increase in gate voltage and thus the setup acts as a resistive load. The setup implementation is as follows:-
+% The working of the circuit is simple. The MOSFET is controlled by voltage on its gate. Till the voltage between gate and source (Vgs) is not higher than a certain value called Vth, the MOSFET is disabled, so no current will be flowing between drain and source. After Vth, the MOSFET starts a current flow and the value of this current will get higher as Vgs increases till a certain value where the MOSFET is fully on. So, by varying the voltage at the gate we change the current flow and by that we can simulate the load value. 
+%\\ \\
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\columnwidth]{IMGS/MosfetChara.jpg}
 	\caption{Mosfet characteristics}
 	\label{fig:arch}
 \end{figure} 
-\\ \\	
-But there is no relation between the voltage at the gate and the current value. For that we add a 1 ohms 5W resistor at the source of the MOSFET. Since we know for sure the resistor is 1 ohm, for example, when 1 amp is flowing, we will have 1V voltage drop on this resistor and we can measure that with a precise ADC. In this way we can know the current value.
-\\ \\
-Since we can't know what voltage to put at the MOSFET gate in order to get any current value, we use the OPAMP and this will do that for us automatically. Let's say we want a current flow of 1A. All we need is to get a 1V voltage drop on the 1ohm power resistor. That point, as you can see in the schematic, is connected to the negative input of the OPAMP. We know that the OPAMP will do all that is necessary to have the same voltage on the input V- as on input V+. So if we place 1V at V+, the OPAMP will change the voltage at the MOSFET gate till the voltage on the resistor is 1V as well, since that point is connected at input V- of the OPAMP. So, just like that, we can get any value of current that we want.
-\\ \\
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\columnwidth]{IMGS/LoadSchematic.jpg}
-	\caption{Variable DC load schematics}
-	\label{fig:arch}
-\end{figure} 
-\\ \\	
+% \\ \\	
+% But there is no relation between the voltage at the gate and the current value. For that we add a 1 ohms 5W resistor at the source of the MOSFET. Since we know for sure the resistor is 1 ohm, for example, when 1 amp is flowing, we will have 1V voltage drop on this resistor and we can measure that with a precise ADC. In this way we can know the current value.
+% \\ \\
+% Since we can't know what voltage to put at the MOSFET gate in order to get any current value, we use the OPAMP and this will do that for us automatically. Let's say we want a current flow of 1A. All we need is to get a 1V voltage drop on the 1ohm power resistor. That point, as you can see in the schematic, is connected to the negative input of the OPAMP. We know that the OPAMP will do all that is necessary to have the same voltage on the input V- as on input V+. So if we place 1V at V+, the OPAMP will change the voltage at the MOSFET gate till the voltage on the resistor is 1V as well, since that point is connected at input V- of the OPAMP. So, just like that, we can get any value of current that we want.
+% \\ \\
+% \begin{figure}[h]
+% 	\centering
+% 	\includegraphics[width=\columnwidth]{IMGS/LoadSchematic.jpg}
+% 	\caption{Variable DC load schematics}
+% 	\label{fig:arch}
+% \end{figure} 
+% \\ \\	
 \section{Testing of DC/DC converters}
 DC/DC converters have a specified input voltage operating range. To confirm the DC/DC converter works properly over the entire range of input voltages, they are tested using an adjustable or programmable dc source to provide the input voltage. A dc electronic load is used on the output of the DC/DC converter to set the output load current and simulate the device that the DC/DC converter would power.
 
-\subsection{Input turn-on, input turn-off voltage levels and timing test}
+% \subsection{Input turn-on, input turn-off voltage levels and timing test}
 
-To test the minimum input voltage turn-on level, the DC/DC converter is turned on using the nominal input voltage while using the electronic load to apply the maximum rated output current or power. The input voltage is then reduced until the unit output begins to drop or the minimum input voltage setting is met.
-\\ \\
-To confirm the DC/DC converter would turn on with a maximum load on the output, the input voltage would be set to the minimum and toggled off and back on while measuring the output voltage and current. The output voltage and ripple and noise may also be measured to see if the lower input voltage setting has any effect on the output stability or ripple.
-\\ \\
-Additionally, this setup can be used to test and measure the turn-on time, turn-off time, and hold-up times. An oscilloscope is used for the ripple and for periodic and random deviation (PARD) measurements.
-\\ \\
-\begin{figure}[h]
+% To test the minimum input voltage turn-on level, the DC/DC converter is turned on using the nominal input voltage while using the electronic load to apply the maximum rated output current or power. The input voltage is then reduced until the unit output begins to drop or the minimum input voltage setting is met.
+% \\ \\
+% To confirm the DC/DC converter would turn on with a maximum load on the output, the input voltage would be set to the minimum and toggled off and back on while measuring the output voltage and current. The output voltage and ripple and noise may also be measured to see if the lower input voltage setting has any effect on the output stability or ripple.
+% \\ \\
+% Additionally, this setup can be used to test and measure the turn-on time, turn-off time, and hold-up times. An oscilloscope is used for the ripple and for periodic and random deviation (PARD) measurements.
+%\\ \\
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\columnwidth]{IMGS/DCDCconverterTestSetup.jpg}
 	\caption{Test setup}
 	\label{fig:arch}
 \end{figure} 
-\\ \\	
-Turn-on time indicates the period from the time at which the minimum input voltage is applied to the time the output voltage is within the output regulation limits. Turn-off time indicates when the input voltage drops below the specified minimum and the output turns off or drops to zero volts.
-\\ \\
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\columnwidth]{IMGS/TurnOnTurnOff.jpg}
-	\caption{Turn-on, Turn-off characteristics}
-	\label{fig:arch}
-\end{figure} 
-\\ \\	
-The hold-up timing test can use the same setup as the input turn-on and turn-off test. Hold-up timing indicates the time from when the input drops below the minimum input voltage and the output voltage drops below its minimum regulated output tolerance. This test also indicates how well the output of the DC/DC converter can continue to operate despite short interrupts and drops in the input voltage. Some DC/DC converters have an input fault detection signal. If so, this signal can be used to trigger the test.
-\\ \\
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=140pt]{IMGS/HoldUpTimeTest.jpg}
-	\caption{Hold-up time characteristics}
-	\label{fig:arch}
-\end{figure} 
-\\ \\
+% \\ \\	
+% % Turn-on time indicates the period from the time at which the minimum input voltage is applied to the time the output voltage is within the output regulation limits. Turn-off time indicates when the input voltage drops below the specified minimum and the output turns off or drops to zero volts.
+% \\ \\
+% % \begin{figure}[h]
+% % 	\centering
+% % 	\includegraphics[width=\columnwidth]{IMGS/TurnOnTurnOff.jpg}
+% % 	\caption{Turn-on, Turn-off characteristics}
+% % 	\label{fig:arch}
+% % \end{figure} 
+% \\ \\	
+% % The hold-up timing test can use the same setup as the input turn-on and turn-off test. Hold-up timing indicates the time from when the input drops below the minimum input voltage and the output voltage drops below its minimum regulated output tolerance. This test also indicates how well the output of the DC/DC converter can continue to operate despite short interrupts and drops in the input voltage. Some DC/DC converters have an input fault detection signal. If so, this signal can be used to trigger the test.
+% \\ \\
+% % \begin{figure}[h]
+% % 	\centering
+% % 	\includegraphics[width=140pt]{IMGS/HoldUpTimeTest.jpg}
+% % 	\caption{Hold-up time characteristics}
+% % 	\label{fig:arch}
+% % \end{figure} 
+% \\ \\
 \subsection{Output line regulation}
 
 This test confirms that the output voltage stays within specified regulation limits when the input voltage varies from minimum to maximum operating voltage, as defined in the DC/DC converter specification. During this test the output load is usually set to nominal or maximum current as specified.
@@ -77,7 +77,7 @@ $V_{omax}$ = Vout at Vin max;
 $V_{omin}$ = Vout at Vin min; and
 $V_{onom}$ = Vout nominal.
 \\ \\
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \begin{tabular}{|l|l|l|l|}
 \hline
@@ -93,7 +93,75 @@ Vin (Volt) & Vout (Volt) & Iin (A) & Efficiency \\ \hline
 \caption{Buck output line regulation at full load (200mA)}
 \label{table:4}
 \end{table}
-\\ \\
+\\
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+Vin (Volt) & Vout (Volt) \\ \hline
+3.6        & 3.3         \\ \hline
+4          & 3.35        \\ \hline
+4.2        & 3.35        \\ \hline
+4.6        & 3.35        \\ \hline
+5          & 3.35        \\ \hline
+5.5        & 3.35        \\ \hline
+6          & 3.35        \\ \hline
+\end{tabular}
+\caption{Buck output line regulation at no load}
+\label{table:4}
+\end{table}
+\\
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+Vin (Volt) & Vout (Volt) & Iin (A) & Efficiency \\ \hline
+3.6        & 3.25        & 0.16    & 84.63542   \\ \hline
+4          & 3.25        & 0.14    & 87.05357   \\ \hline
+4.2        & 3.26        & 0.13    & 89.56044   \\ \hline
+4.6        & 3.27        & 0.12    & 88.8587    \\ \hline
+5          & 3.28        & 0.11    & 89.45455   \\ \hline
+5.5        & 3.29        & 0.1     & 89.72727   \\ \hline
+6          & 3.27        & 0.09    & 90.83333   \\ \hline
+\end{tabular}
+\caption{Buck output line regulation at half load(150mA)}
+\label{table:4}
+\end{table}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\columnwidth]{IMGS/Buck output line regulation at full load (200mA).png}
+	\caption{Buck output line regulation at full load (200mA)}
+	\label{fig:arch}
+\end{figure}
+\\
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+Vin (Volt) & Iin (A) & Vout (Volt) & Efficiency \\ \hline
+3.6        & 1.09    & 3.7         & 70.71865   \\ \hline
+4.2        & 1.24    & 4.47        & 64.37212   \\ \hline
+4.8        & 1.2     & 4.8         & 66.66667   \\ \hline
+\end{tabular}
+\caption{Buck output line regulation at full load(750mA)}
+\label{table:4}
+\end{table}
+\\
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+Vin (Volt) & Iin (A) & Vout (Volt) & Efficiency \\ \hline
+3.3        & 0.84    & 4.93        & 71.13997   \\ \hline
+4.2        & 0.68    & 5.13        & 71.84874   \\ \hline
+5          & 0.65    & 5.05        & 62.15385   \\ \hline
+\end{tabular}
+\caption{Buck output line regulation at half load(400mA)}
+\label{table:4}
+\end{table}
+
 \begin{table}[h]
 \centering
 \begin{tabular}{|l|l|}
@@ -114,8 +182,29 @@ where:
 $V_{oio}$ = Vout at Iout max; 
 $V_{oim}$ = Vout at Iout min; and
 $V_{onom}$ = Vout nominal.
-\\ \\
-\begin{table}[h]
+\\
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+Iout (mA) & Vout (Volt) & Iin(A) & Efficiency \\ \hline
+50        & 4.94        & 0.09   & 76.23457   \\ \hline
+100       & 4.94        & 0.18   & 76.23457   \\ \hline
+150       & 4.91        & 0.28   & 73.06548   \\ \hline
+200       & 4.89        & 0.39   & 69.65812   \\ \hline
+250       & 4.87        & 0.49   & 69.01927   \\ \hline
+300       & 4.87        & 0.61   & 66.53005   \\ \hline
+350       & 4.87        & 0.77   & 61.4899    \\ \hline
+400       & 4.86        & 0.86   & 62.7907    \\ \hline
+450       & 4.7         & 0.99   & 59.34343   \\ \hline
+500       & 4.44        & 0.92   & 67.02899   \\ \hline
+550       & 4.6         & 1.01   & 69.58196   \\ \hline
+\end{tabular}
+\caption{Boost load regulation at 3.6V Vin}
+\label{table:4}
+\end{table}
+\\
+\begin{table}[H]
 \centering
 \begin{tabular}{|l|l|l|l|}
 \hline
@@ -140,8 +229,32 @@ Iout (mA) & Vout (Volt) & Iin(A) & Efficiency \\ \hline
 \caption{Boost load regulation at 4.2V Vin}
 \label{table:4}
 \end{table}
-\\ \\
-\begin{table}[h]
+\\ 
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+Iout (mA) & Vout (Volt) & Iin(A) & Efficiency \\ \hline
+100       & 4.93        & 0.12   & 82.16667   \\ \hline
+200       & 4.87        & 0.25   & 77.92      \\ \hline
+300       & 4.86        & 0.39   & 74.76923   \\ \hline
+400       & 4.84        & 0.54   & 71.7037    \\ \hline
+500       & 5.02        & 0.66   & 76.06061   \\ \hline
+600       & 5.02        & 0.85   & 70.87059   \\ \hline
+700       & 5.02        & 1.01   & 69.58416   \\ \hline
+800       & 5.02        & 1.19   & 67.4958    \\ \hline
+\end{tabular}
+\caption{Boost load regulation at 5.0V Vin}
+\label{table:4}
+\end{table}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\columnwidth]{IMGS/Boost load regulation at 4.2V Vin.png}
+	\caption{Test setup}
+	\label{fig:arch}
+\end{figure}
+\\
+\begin{table}[H]
 \centering
 \begin{tabular}{|l|l|l|l|}
 \hline
@@ -157,16 +270,53 @@ Iout (mA) & Vout (Volt) & Iin (A) & Efficiency \\ \hline
 \caption{Buck load regulation at 3.6V input}
 \label{table:4}
 \end{table}
-\subsection{Output transient response deviation and time}
+\\
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+Iout (mA) & Vout (Volt) & Iin (A) & Efficiency \\ \hline
+50        & 3.24        & 0.04    & 84.375     \\ \hline
+100       & 3.23        & 0.08    & 84.11458   \\ \hline
+150       & 3.23        & 0.12    & 84.11458   \\ \hline
+200       & 3.21        & 0.16    & 83.59375   \\ \hline
+250       & 3.21        & 0.21    & 79.6131    \\ \hline
+300       & 3.22        & 0.25    & 80.5       \\ \hline
+350       & 3.18        & 0.27    & 85.87963   \\ \hline
+\end{tabular}
+\caption{Buck load regulation at 4.8V input}
+\label{table:4}
+\end{table}
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+Iout (mA) & Vout (Volt) & Iin (A) & Efficiency \\ \hline
+50        & 3.3         & 0.03    & 91.66667   \\ \hline
+100       & 3.21        & 0.06    & 89.16667   \\ \hline
+150       & 3.26        & 0.1     & 81.5       \\ \hline
+200       & 3.21        & 0.13    & 82.30769   \\ \hline
+250       & 3.22        & 0.15    & 89.44444   \\ \hline
+\end{tabular}
+\caption{Buck load regulation at 6V input}
+\label{table:4}
+\end{table}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\columnwidth]{IMGS/Buck load regulation at 3.6V input.png}
+	\caption{Test setup}
+	\label{fig:arch}
+\end{figure}
+% \subsection{Output transient response deviation and time}
 
- This test determines how well the output voltage responds to a sudden change in output current. The measurement includes the maximum output voltage deviation and the time it takes for the voltage to recover to its regulated output nominal voltage tolerance.
-\\ \\
-For this test, a dc electronic load is set for a minimum and maximum current and then set for the slew rate for the rising and falling edge of the current transition. The frequency and duty cycle can also be set for the pulsed current.
-\\ \\
-\subsection{Output ripple and noise voltage} 
+%  This test determines how well the output voltage responds to a sudden change in output current. The measurement includes the maximum output voltage deviation and the time it takes for the voltage to recover to its regulated output nominal voltage tolerance.
+% \\ \\
+% For this test, a dc electronic load is set for a minimum and maximum current and then set for the slew rate for the rising and falling edge of the current transition. The frequency and duty cycle can also be set for the pulsed current.
+% \\ \\
+% \subsection{Output ripple and noise voltage} 
 
-The output ripple and PARD reflects the output voltage of the DC/DC converter and its ability to filter out ripple and noise. Various topologies used in DC/DC converters have different internal switching frequencies which are reflected in the output ripple frequency. For example, internal chopper circuit transients can generate higher frequency noise. The output noise and ripple are measured using an oscilloscope. To avoid erroneous noise, it is important to minimize the length of the ground wire on the voltage probe.
-\\ \\
+% The output ripple and PARD reflects the output voltage of the DC/DC converter and its ability to filter out ripple and noise. Various topologies used in DC/DC converters have different internal switching frequencies which are reflected in the output ripple frequency. For example, internal chopper circuit transients can generate higher frequency noise. The output noise and ripple are measured using an oscilloscope. To avoid erroneous noise, it is important to minimize the length of the ground wire on the voltage probe.
+% \\ \\
 \subsection{Output over-current protection}
 
 The output over-current protection is intended to protect the DC/DC converter and the device it powers when the load exceeds the converter’s maximum rated current. There are different methods used in over-current protection. But the typical approaches are fold-back current limit and pulsing current-limit. The latter is generally referred to as hiccup-mode current limit.
@@ -181,14 +331,14 @@ If the DC/DC converter does not have an adjustable output, an external voltage s
 \\ \\
 DC/DC converters having an OVP fault signal can use it to determine if the output detected the OVP and, if so, shut off the output. The output voltage is monitored to determine when the OVP happened and then compared to the OVP specified limits.
 \\ \\
-\subsection{Output operating temperature and over-temperature protection} 
+% \subsection{Output operating temperature and over-temperature protection} 
 
-DC/DC converters have an operating temperature range, and many have an over-temperature protection (OTP) circuit that will turn off the output if temperature gets sufficiently high. For this test, a thermal chamber can raise and lower the DC/DC converter temperature to simulate the operating temperature range.
-\\ \\
-Thermocouples and thermal probes or infrared thermal measurement devices can measure the temperatures on the body of the DC/DC converter. During the operating temperature test, the DC/DC converter is loaded to its maximum rating for current and power. Meanwhile, the output voltage is monitored to verify it stays within specified limits.
-\\ \\
-During the test, the device temperature is recorded while monitoring the output voltage until the OTP circuit triggers and the output shuts off. The unit is then allowed to cool and input voltage is toggled off and on to verify the DC/DC converter recovers from the OTP.
-\\ \\
+% DC/DC converters have an operating temperature range, and many have an over-temperature protection (OTP) circuit that will turn off the output if temperature gets sufficiently high. For this test, a thermal chamber can raise and lower the DC/DC converter temperature to simulate the operating temperature range.
+% \\ \\
+% Thermocouples and thermal probes or infrared thermal measurement devices can measure the temperatures on the body of the DC/DC converter. During the operating temperature test, the DC/DC converter is loaded to its maximum rating for current and power. Meanwhile, the output voltage is monitored to verify it stays within specified limits.
+% \\ \\
+% During the test, the device temperature is recorded while monitoring the output voltage until the OTP circuit triggers and the output shuts off. The unit is then allowed to cool and input voltage is toggled off and on to verify the DC/DC converter recovers from the OTP.
+% \\ \\
 \subsection{Efficiency} 
 
 Efficiency determines the internal power dissipated by the DC/DC converter and how efficiently input power transfers to the converter output. This test usually takes place at the nominal input voltage and with the output load set to nominal or maximum specified ratings. The input voltage, current, and power is measured while the same parameters are measured on the output. Efficiency percentage $E_{p}$ comes from the equation:
@@ -202,10 +352,22 @@ Vin and Iin = converter input voltage and current.
 This test can also capture the efficiency at various power levels. It’s common to plot the data to show efficiency versus output-current.
 
 \section{Battery Charger Testing}
-
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\columnwidth]{IMGS/Battery CC CV.pdf}
+	\caption{Battery charger demonstrating CC and CV charging}
+	\label{fig:arch}
+\end{figure}
+\\ \\
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\columnwidth]{IMGS/Battery Charge Cycle.pdf}
+	\caption{Variation of charging voltage and current}
+	\label{fig:arch}
+\end{figure}
 \section{MPPT Module Testing}
 
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \begin{tabular}{|l|l|l|l|}
 \hline
@@ -222,6 +384,31 @@ Vin (Volt) & Iin (A) & Vout (Volt) & Efficiency \\ \hline
 \caption{MPPT output line regulation at half load (200mA)}
 \label{table:4}
 \end{table}	
+\\
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+Vin (Volt) & Iin (A) & Vout (Volt) & Efficiency \\ \hline
+2          & 0.39    & 1.88        & 98.82051   \\ \hline
+2.5        & 0.43    & 2.48        & 94.58605   \\ \hline
+3          & 0.45    & 3.02        & 91.71852   \\ \hline
+3.3        & 0.46    & 3.39        & 91.56126   \\ \hline
+3.6        & 0.44    & 3.78        & 97.84091   \\ \hline
+4          & 0.45    & 4.2         & 95.66667   \\ \hline
+4.2        & 0.45    & 4.41        & 95.66667   \\ \hline
+4.6        & 0.49    & 5           & 90.94942   \\ \hline
+\end{tabular}
+\caption{MPPT output line regulation at full load (400mA)}
+\label{table:4}
+\end{table}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\columnwidth]{IMGS/MPPT output line regulation at half load (200mA).png}
+	\caption{Test setup}
+	\label{fig:arch}
+\end{figure}
+
 
 
 
