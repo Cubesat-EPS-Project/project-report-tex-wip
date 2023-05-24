@@ -2,8 +2,31 @@
 
 \chapter{Conclusion}
 
-\section{Conclusion}
-After conducting proper literature study, we have decided upon the type of architecture to be implemented on the EPS and have formed the specifications of the components. The design of all the circuits was also completed and PCB design was started. Next, we are planning to procure all the components and design the PCB layouts. We look forward to completing the project as per the schedule.
-\section{Future Scope}
-The STM 32 Micro-controller could be used to monitor and display the voltage and current levels of the different buses and hence determine whether a bus is operating or not. Also, the micro-controller could be used to provide the PWM for the converter in the MPPT circuit depending upon the available irradiance by following an algorithm.
+The work described here corresponds to the first phase of work on the development of the
+Electrical Power System of BARTOSAT. The objective was to carry the project forward as far as
+possible to build a base to design a fully functional EPS by selecting appropriate architecture and testing different sections of the EPS separately so that building a fully integrated EPS would become more easy.
 
+\section{Accomplished Work}
+\subsection{Architecture}
+The architecture of the EPS as well as interaction between components are established. An EPS architecture with peak power transfer, regulated supply and distributed topologies was selected and successfully implemented. An initial power budget was computed to calculate the total power consumption and to select appropriate voltage regulation IC's according to the maximum current output.
+
+\subsection{Design}
+
+Circuits for voltage regulation, i.e Buck circuit, boost circuit, MPPT, battery charger with power path were designed and the PCB boards for the circuits were fabricated. The boards were also soldered successfully.
+
+\subsection{Implementation and tests}
+The modules were tested properly to find the voltage regulation, load regulation characteristics and the resuts were plotted. Also, the efficiencies of all the modules were calculated at different operating conditions and plotted.
+
+\section{Future Scope}
+\begin{itemize}
+\item Integrate all the demo boards into a single PCB board, including the micro-controller, implementing PC104 architecture.
+\item Update the power budget of the CubeSat by including new requirements of all the subsystems.
+\item Improve the design of the 5V and 3.3V converters to reduce voltage ripple by adding filter capacitors.
+\item Measure the I-V curve of the solar panels and compare the result with the Matalab model.
+\item Design a battery heater for the final EPS board.
+\item Improve the design of protection circuit.
+\item Implement redundant circuit design.
+\item Test the complete EPS board.
+\item Test the EPS with all other subsystems, both in the laboratory and in appropriate environmental conditions.
+\item Test multitasking in STM32 micro-controller by implementing FreeRTOS.
+\end{itemize}

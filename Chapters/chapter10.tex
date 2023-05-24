@@ -76,7 +76,8 @@ where:
 $V_{omax}$ = Vout at Vin max; 
 $V_{omin}$ = Vout at Vin min; and
 $V_{onom}$ = Vout nominal.
-\\ \\
+\pagebreak
+
 \begin{table}[H]
 \centering
 \begin{tabular}{|l|l|l|l|}
@@ -94,6 +95,12 @@ Vin (Volt) & Vout (Volt) & Iin (A) & Efficiency \\ \hline
 \label{table:4}
 \end{table}
 \\
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\columnwidth]{IMGS/Buck output line regulation at full load (200mA).png}
+	\caption{Buck output line regulation at full load (200mA)}
+	\label{fig:arch}
+\end{figure}
 
 \begin{table}[H]
 \centering
@@ -112,6 +119,12 @@ Vin (Volt) & Vout (Volt) \\ \hline
 \label{table:4}
 \end{table}
 \\
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\columnwidth]{IMGS/Buck line regulation at no load.png}
+	\caption{Buck output line regulation at no load}
+	\label{fig:arch}
+\end{figure}
 \begin{table}[H]
 \centering
 \begin{tabular}{|l|l|l|l|}
@@ -128,13 +141,14 @@ Vin (Volt) & Vout (Volt) & Iin (A) & Efficiency \\ \hline
 \caption{Buck output line regulation at half load(150mA)}
 \label{table:4}
 \end{table}
+\\
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\columnwidth]{IMGS/Buck output line regulation at full load (200mA).png}
-	\caption{Buck output line regulation at full load (200mA)}
+	\includegraphics[width=\columnwidth]{IMGS/Buck output line regulation at half load (150mA).png}
+	\caption{Buck output line regulation at half load(150mA)}
 	\label{fig:arch}
 \end{figure}
-\\
+\pagebreak
 
 \begin{table}[H]
 \centering
@@ -145,10 +159,19 @@ Vin (Volt) & Iin (A) & Vout (Volt) & Efficiency \\ \hline
 4.2        & 1.24    & 4.47        & 64.37212   \\ \hline
 4.8        & 1.2     & 4.8         & 66.66667   \\ \hline
 \end{tabular}
-\caption{Buck output line regulation at full load(750mA)}
+\caption{Boost output line regulation at full load(750mA)}
 \label{table:4}
 \end{table}
 \\
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\columnwidth]{IMGS/Boost output regulation at full load (750mA).png}
+	\caption{Boost output line regulation at full load (750mA)}
+	\label{fig:arch}
+\end{figure}
+\pagebreak
+
 \begin{table}[H]
 \centering
 \begin{tabular}{|l|l|l|l|}
@@ -158,21 +181,17 @@ Vin (Volt) & Iin (A) & Vout (Volt) & Efficiency \\ \hline
 4.2        & 0.68    & 5.13        & 71.84874   \\ \hline
 5          & 0.65    & 5.05        & 62.15385   \\ \hline
 \end{tabular}
-\caption{Buck output line regulation at half load(400mA)}
+\caption{Boost output line regulation at half load(400mA)}
 \label{table:4}
 \end{table}
-
-\begin{table}[h]
-\centering
-\begin{tabular}{|l|l|}
-\hline
-Vin            & Operating condition \\ \hline
-1.4            & On                  \\ \hline
-\textless{}1.4 & Shutdown            \\ \hline
-\end{tabular}
-\caption{Boost output regulation at no load}
-\label{table:4}
-\end{table}
+\\
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\columnwidth]{IMGS/Boost output line regulation at half load (400mA).png}
+	\caption{Boost output line regulation at half load (400mA)}
+	\label{fig:arch}
+\end{figure}
+\pagebreak
 \subsection{Output load regulation} 
 The output load regulation test ensures the DC/DC converter output voltage stays within the specified regulation tolerance. Here, the change in output voltage is recorded while load is varied from minimum to maximum current. This delta voltage is used to calculate the percentage of deviation which is compared to the specified load regulation limits. Load regulation $L_{r}$ is calculated as a percentage from the equation:
 \\ \\
@@ -182,7 +201,7 @@ where:
 $V_{oio}$ = Vout at Iout max; 
 $V_{oim}$ = Vout at Iout min; and
 $V_{onom}$ = Vout nominal.
-\\
+\pagebreak
 \begin{table}[H]
 \centering
 \begin{tabular}{|l|l|l|l|}
@@ -204,6 +223,12 @@ Iout (mA) & Vout (Volt) & Iin(A) & Efficiency \\ \hline
 \label{table:4}
 \end{table}
 \\
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\columnwidth]{IMGS/Boost load regulation at 3.6V Vin.png}
+	\caption{Boost load regulation at 3.6V Vin}
+	\label{fig:arch}
+\end{figure}
 \begin{table}[H]
 \centering
 \begin{tabular}{|l|l|l|l|}
@@ -230,6 +255,12 @@ Iout (mA) & Vout (Volt) & Iin(A) & Efficiency \\ \hline
 \label{table:4}
 \end{table}
 \\ 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\columnwidth]{IMGS/Boost load regulation at 4.2V Vin.png}
+	\caption{Boost load regulation at 4.2V Vin}
+	\label{fig:arch}
+\end{figure}
 \begin{table}[H]
 \centering
 \begin{tabular}{|l|l|l|l|}
@@ -247,10 +278,11 @@ Iout (mA) & Vout (Volt) & Iin(A) & Efficiency \\ \hline
 \caption{Boost load regulation at 5.0V Vin}
 \label{table:4}
 \end{table}
+\\
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\columnwidth]{IMGS/Boost load regulation at 4.2V Vin.png}
-	\caption{Test setup}
+	\includegraphics[width=\columnwidth]{IMGS/Boost load regulation at 5V Vin.png}
+	\caption{Boost load regulation at 5.0V Vin}
 	\label{fig:arch}
 \end{figure}
 \\
@@ -271,6 +303,13 @@ Iout (mA) & Vout (Volt) & Iin (A) & Efficiency \\ \hline
 \label{table:4}
 \end{table}
 \\
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\columnwidth]{IMGS/Buck load regulation at 3.6V input.png}
+	\caption{Test setup}
+	\label{fig:arch}
+\end{figure}
+\\
 \begin{table}[H]
 \centering
 \begin{tabular}{|l|l|l|l|}
@@ -287,6 +326,13 @@ Iout (mA) & Vout (Volt) & Iin (A) & Efficiency \\ \hline
 \caption{Buck load regulation at 4.8V input}
 \label{table:4}
 \end{table}
+\\
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\columnwidth]{IMGS/Buck load regulation at 4.8V input.png}
+	\caption{Buck load regulation at 4.8V input}
+	\label{fig:arch}
+\end{figure}
 \begin{table}[H]
 \centering
 \begin{tabular}{|l|l|l|l|}
@@ -301,12 +347,14 @@ Iout (mA) & Vout (Volt) & Iin (A) & Efficiency \\ \hline
 \caption{Buck load regulation at 6V input}
 \label{table:4}
 \end{table}
+\\
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\columnwidth]{IMGS/Buck load regulation at 3.6V input.png}
-	\caption{Test setup}
+	\includegraphics[width=\columnwidth]{IMGS/Buck load regulation at 6V input.png}
+	\caption{Buck load regulation at 6V input}
 	\label{fig:arch}
 \end{figure}
+
 % \subsection{Output transient response deviation and time}
 
 %  This test determines how well the output voltage responds to a sudden change in output current. The measurement includes the maximum output voltage deviation and the time it takes for the voltage to recover to its regulated output nominal voltage tolerance.
