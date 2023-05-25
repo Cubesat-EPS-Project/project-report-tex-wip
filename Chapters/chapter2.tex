@@ -12,21 +12,21 @@ The architecture of the EPS as well as interaction between components are establ
 
 \subsection{Design}
 
-Circuits for voltage regulation, i.e Buck circuit, boost circuit, MPPT, battery charger with power path were designed and the PCB boards for the circuits were fabricated. The boards were also soldered successfully.
+Circuits for voltage regulation, i.e buck circuit, boost circuit, MPPT, battery charger with power path were designed and the PCB boards for the circuits were fabricated. The boards were also soldered successfully. \\
+All the demo boards are integrated into a single PCB board, including the micro-controller, implementing PC/104 architecture. The schematic of the 4 layer PCB board schematic was also drawn and designed and footprints were assigned to the components. 
 
 \subsection{Implementation and tests}
-The modules were tested properly to find the voltage regulation, load regulation characteristics and the resuts were plotted. Also, the efficiencies of all the modules were calculated at different operating conditions and plotted.
+The modules were tested properly to find the voltage regulation, load regulation characteristics and the results were plotted. Also, the efficiencies of all the modules were calculated at different operating conditions and plotted. 
 
 \section{Future Scope}
 \begin{itemize}
-\item Integrate all the demo boards into a single PCB board, including the micro-controller, implementing PC104 architecture.
+\item Complete PCB routing of the 4 layer PCB.
 \item Update the power budget of the CubeSat by including new requirements of all the subsystems.
 \item Improve the design of the 5V and 3.3V converters to reduce voltage ripple by adding filter capacitors.
-\item Measure the I-V curve of the solar panels and compare the result with the Matalab model.
+\item Measure the I-V curve of the solar panels and compare the result with the MATLAB model.
 \item Design a battery heater for the final EPS board.
 \item Improve the design of protection circuit.
 \item Implement redundant circuit design.
-\item Test the complete EPS board.
 \item Test the EPS with all other subsystems, both in the laboratory and in appropriate environmental conditions.
 \item Test multitasking in STM32 micro-controller by implementing FreeRTOS.
 \end{itemize}

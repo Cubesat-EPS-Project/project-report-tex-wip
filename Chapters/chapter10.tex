@@ -4,16 +4,18 @@
 
 \section{Variable DC load using MOSFET}
 To test the efficiency of the demo boards, different tests like line regulation, load regulation etc have to be conducted. For line regulation, at a certain constant load, we should create a voltage values table and get the efficiency curve. For that, we need different values of resistance (load). Instead of using resistance, we could use a MOSFET for simulating various load conditions. Since we don’t need any higher loads to test the demo boards, a circuit that simulate a load precisely for values from 0 to 2A and with a precision of 0.01A will do the job.
-\\ \\
-IRFZ44 is the MOSFET used to implement this circuit. It has a Vds on voltage of 10V. A potentiometer is used to control the gate source voltage and the circuit to be tested is connected between the drain and source terminals. By varying the gate voltage, the drain source conduction can be controlled. The drain source voltage and current increases proportionally with increase in gate voltage and thus the setup acts as a resistive load. The setup implementation is as follows:-
-% The working of the circuit is simple. The MOSFET is controlled by voltage on its gate. Till the voltage between gate and source (Vgs) is not higher than a certain value called Vth, the MOSFET is disabled, so no current will be flowing between drain and source. After Vth, the MOSFET starts a current flow and the value of this current will get higher as Vgs increases till a certain value where the MOSFET is fully on. So, by varying the voltage at the gate we change the current flow and by that we can simulate the load value. 
-%\\ \\
+
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\columnwidth]{IMGS/MosfetChara.jpg}
 	\caption{Mosfet characteristics}
 	\label{fig:arch}
 \end{figure} 
+
+IRFZ44 is the MOSFET used to implement this circuit. It has a Vds on voltage of 10V. A potentiometer is used to control the gate source voltage and the circuit to be tested is connected between the drain and source terminals. By varying the gate voltage, the drain source conduction can be controlled. The drain source voltage and current increases proportionally with increase in gate voltage and thus the setup acts as a resistive load. The setup implementation is as follows:-
+% The working of the circuit is simple. The MOSFET is controlled by voltage on its gate. Till the voltage between gate and source (Vgs) is not higher than a certain value called Vth, the MOSFET is disabled, so no current will be flowing between drain and source. After Vth, the MOSFET starts a current flow and the value of this current will get higher as Vgs increases till a certain value where the MOSFET is fully on. So, by varying the voltage at the gate we change the current flow and by that we can simulate the load value. 
+%\\ \\
+
 % \\ \\	
 % But there is no relation between the voltage at the gate and the current value. For that we add a 1 ohms 5W resistor at the source of the MOSFET. Since we know for sure the resistor is 1 ohm, for example, when 1 amp is flowing, we will have 1V voltage drop on this resistor and we can measure that with a precise ADC. In this way we can know the current value.
 % \\ \\
@@ -26,6 +28,17 @@ IRFZ44 is the MOSFET used to implement this circuit. It has a Vds on voltage of 
 % 	\label{fig:arch}
 % \end{figure} 
 % \\ \\	
+\section{VirtualBench}
+
+The VirtualBench is an instrument which combines a mixed-signal oscilloscope with an arbitrary waveform generator, a digital multi-meter, a programmable DC power supply, and digital I/O. The all-in-one features are simple, convenient, and provide more efficient circuit design, debugging, and validation, and the included software lets us to view all measurements on a single screen.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\columnwidth]{IMGS/TestSetupPics/NIVirtualBench.png}
+	\caption{VirtualBench}
+	\label{fig:arch}
+\end{figure}
+\pagebreak
 \section{Testing of DC/DC converters}
 DC/DC converters have a specified input voltage operating range. To confirm the DC/DC converter works properly over the entire range of input voltages, they are tested using an adjustable or programmable dc source to provide the input voltage. A dc electronic load is used on the output of the DC/DC converter to set the output load current and simulate the device that the DC/DC converter would power.
 
@@ -43,6 +56,13 @@ DC/DC converters have a specified input voltage operating range. To confirm the 
 	\caption{Test setup}
 	\label{fig:arch}
 \end{figure} 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\columnwidth]{IMGS/TestSetupPics/TESTPIC_REG_MODULE.jpg}
+	\caption{Regulation module test setup}
+	\label{fig:arch}
+\end{figure}
 % \\ \\	
 % % Turn-on time indicates the period from the time at which the minimum input voltage is applied to the time the output voltage is within the output regulation limits. Turn-off time indicates when the input voltage drops below the specified minimum and the output turns off or drops to zero volts.
 % \\ \\
@@ -76,6 +96,14 @@ where:
 $V_{omax}$ = Vout at Vin max; 
 $V_{omin}$ = Vout at Vin min; and
 $V_{onom}$ = Vout nominal.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\columnwidth]{IMGS/TestSetupPics/Buck_out.jpg}
+	\caption{Testing buck converter in 3.3V rail}
+	\label{fig:arch}
+\end{figure}
+
 \pagebreak
 
 \begin{table}[H]
@@ -192,6 +220,13 @@ Vin (Volt) & Iin (A) & Vout (Volt) & Efficiency \\ \hline
 	\label{fig:arch}
 \end{figure}
 \pagebreak
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\columnwidth]{IMGS/TestSetupPics/Boost_out.jpg}
+	\caption{Testing of boost converter in 5V rail}
+	\label{fig:arch}
+\end{figure}
 \subsection{Output load regulation} 
 The output load regulation test ensures the DC/DC converter output voltage stays within the specified regulation tolerance. Here, the change in output voltage is recorded while load is varied from minimum to maximum current. This delta voltage is used to calculate the percentage of deviation which is compared to the specified load regulation limits. Load regulation $L_{r}$ is calculated as a percentage from the equation:
 \\ \\
@@ -257,7 +292,7 @@ Iout (mA) & Vout (Volt) & Iin(A) & Efficiency \\ \hline
 \\ 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\columnwidth]{IMGS/Boost load regulation at 4.2V Vin.png}
+	\includegraphics[width=0.9\columnwidth]{IMGS/Boost load regulation at 4.2V Vin.png}
 	\caption{Boost load regulation at 4.2V Vin}
 	\label{fig:arch}
 \end{figure}
@@ -285,7 +320,7 @@ Iout (mA) & Vout (Volt) & Iin(A) & Efficiency \\ \hline
 	\caption{Boost load regulation at 5.0V Vin}
 	\label{fig:arch}
 \end{figure}
-\\
+
 \begin{table}[H]
 \centering
 \begin{tabular}{|l|l|l|l|}
@@ -306,7 +341,7 @@ Iout (mA) & Vout (Volt) & Iin (A) & Efficiency \\ \hline
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\columnwidth]{IMGS/Buck load regulation at 3.6V input.png}
-	\caption{Test setup}
+	\caption{ Buck load regulation at 3.6V input}
 	\label{fig:arch}
 \end{figure}
 \\
@@ -404,20 +439,46 @@ This test can also capture the efficiency at various power levels. It’s common
 falls underneath the constant current limit and thus it enters the constant voltage mode at which point the battery charges up to its max capacity where almost no current is flowing any more. This method is used to prevent overcharging of batteries.
 
 In this circuit, the charging voltage was set at 4.2V as per the data-sheet of the battery. From fig. \ref{fig:cccv}, it is clear that the battery charges in constant current mode and its voltage rises to approximately 4.2V. Then the charger switches to constant voltage mode and the charging current reduces to zero eventually.
+
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\columnwidth]{IMGS/Battery CC CV.pdf}
-	\caption{Battery charger demonstrating CC and CV charging}
+	\includegraphics[width=0.72\columnwidth]{IMGS/TestSetupPics/Bat_cha_test.jpg}
+	\caption{Battery charger test setup}
+	\label{fig:arch}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\columnwidth]{IMGS/Battery CC CV.pdf}
+	\caption{Constant current and constant voltage charging}
 	\label{fig:cccv}
 \end{figure}
-Fig. \ref{fig:chargin'} shows a 18650 Li-Ion battery being charged upto 100\%.
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\columnwidth]{IMGS/Battery Charge Cycle.pdf}
-	\caption{Variation of charging voltage and current}
+	\caption{Variation of charging voltage and current while charging the 18650 Li-Ion battery upto 100\%}
 	\label{fig:chargin'}
 \end{figure}
 \section{MPPT Module Testing}
+
+The demo board for MPPT is designed with SPV1040T IC, which has a lower cutoff voltage of 1V. Varying input voltages from solar panel is estimated to be between 2V-5V. The MPPT board will boost voltages in these range to 5V or larger and provide it to the battery charger. The basic working of the MPPT board is tested by providing an input voltage between 2V and 5V and measuring the output voltage, which will be 5V or more.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\columnwidth]{IMGS/TestSetupPics/TESTPIC_MPPT_MODULE.jpg}
+	\caption{MPPT test setup}
+	\label{fig:arch}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\columnwidth]{IMGS/TestSetupPics/MPPT_out.jpg}
+	\caption{MPPT output voltage at no load}
+	\label{fig:arch}
+\end{figure}
+
+
 
 \begin{table}[H]
 \centering
@@ -437,6 +498,13 @@ Vin (Volt) & Iin (A) & Vout (Volt) & Efficiency \\ \hline
 \label{table:4}
 \end{table}	
 \\
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\columnwidth]{IMGS/MPPT output line regulation at half load (200mA).png}
+	\caption{MPPT output line regulation at half load (200mA)}
+	\label{fig:arch}
+\end{figure}
+
 \begin{table}[H]
 \centering
 \begin{tabular}{|l|l|l|l|}
@@ -454,10 +522,11 @@ Vin (Volt) & Iin (A) & Vout (Volt) & Efficiency \\ \hline
 \caption{MPPT output line regulation at full load (400mA)}
 \label{table:4}
 \end{table}
+
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=\columnwidth]{IMGS/MPPT output line regulation at half load (200mA).png}
-	\caption{Test setup}
+	\includegraphics[width=\columnwidth]{IMGS/MPPT output line regulation at full load (400mA).png}
+	\caption{MPPT output line regulation at full load (400mA)}
 	\label{fig:arch}
 \end{figure}
 

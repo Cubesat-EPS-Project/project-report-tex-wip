@@ -322,6 +322,61 @@ The screw terminals are used to connect to the power inputs and outputs of the P
  Few considered options were Arduino, Raspberry Pi, TI micro-controllers, STM32 etc. Arduino has limited programming capabilities, and Raspberry Pi was too large for the need and also has high power consumption. STM32 was selected due to its wide range of capabilities, still maintaining the size and power constraints. It also has more community support which makes the programming easier.
  \par
  STM32 is a ARM Cortex M4 32-bit micro-controller having a flash memory of 512 Kb. It can have upto 81 I/O ports with interrupt capabilities. It can have upto 78 fast I/Os upto 42 MHz, 3 I2C interfaces, 3 USARTs, 4 SPIs etc. We selected STM32401RE development board to test its capabilities, and one of its advantage is that, it can be programmed using Arduino IDE or even MATLAB, apart from its own programming IDE called STM32CUBE IDE.
+
+\section{EPS PCB Design as per PC/104 Specifications}
+  After all the selected components are tested separately and their proper working is ensured, these components can be combined together in a single PCB. This PCB is a four layer PCB with separate 3.3 and 5V power planes and the bottom layer as the ground plane. A PC/104 connector is used for the ease of stackability of subsystems. As our aim is to design a 1U CubeSat, the PCB dimensions are limited to 9.5cm x 9.5 cm. For simplifying the design process in KiCad, hierarchical sheets feature was used and the sheets were linked using global labels. The schematics of the different components in the EPS are shown below:
+
+  \begin{figure}[h]
+ 	\centering
+ 	\includegraphics[width=0.99\columnwidth]{FrontMatter/pcb-MPPTv2.pdf}
+ 	\caption{\centering MPPT}
+ 	\label{fig:mpp 4lr}
+ \end{figure}
+ 
+   \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=0.99\columnwidth]{FrontMatter/pcb-Battery Charger.pdf}
+ 	\caption{\centering Battery Charger}
+ 	\label{fig:batt 4lr}
+ \end{figure}
+
+
+  \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=0.99\columnwidth]{FrontMatter/pcb-Regulation Module.pdf}
+ 	\caption{\centering Power Regulation circuits}
+ 	\label{fig:reg 4lr}
+ \end{figure}
+ 
+   \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=0.99\columnwidth]{FrontMatter/pcb-ProtectionCircuit.pdf}
+ 	\caption{\centering Protection eFuse circuits}
+ 	\label{fig:protecc 4lr}
+ \end{figure}
+
+  \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=0.99\columnwidth]{FrontMatter/pcb-MeasurementCircuit.pdf}
+ 	\caption{\centering Voltage and Current measurement circuits}
+ 	\label{fig:mes 4lr}
+ \end{figure}
+ 
+   \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=0.99\columnwidth]{FrontMatter/pcb-STM32F405board.pdf}
+ 	\caption{\centering STM32 Micro-controller}
+ 	\label{fig:uC 4lr}
+ \end{figure}
+
+
+   \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=0.99\columnwidth]{FrontMatter/pcb.pdf}
+ 	\caption{\centering PC/104 Connection Pins (Only pins connected to the EPS are labelled)}
+ 	\label{fig:pc104 4lr}
+ \end{figure}
+
  
  
  %\pagebreak
