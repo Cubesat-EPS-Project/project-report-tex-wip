@@ -55,7 +55,7 @@ Connecting multiple regulators in parallel can sometimes cause problems if one s
 
 
 
-Specifications of  SPV1040:
+Specifications of  SPV1040 [7]:
 	\begin{itemize}
 	\item Input Voltage: 0.3 - 5.5 V
 	\item Output Voltage: 5 V
@@ -172,7 +172,7 @@ Specifications of Panasonic NCR 18650 GA Li-Ion cell:
  	\begin{figure}[h]
  		\centering
  		\includegraphics[width=0.7\columnwidth]{kich.png}
- 		\caption[$K_{ICHG}$ vs. $I_{CHG}$ characteristics]{\centering $K_{ICHG}$ vs. $I_{CHG}$ characteristics (Source: BQ25302 data-sheet)}
+ 		\caption[$K_{ICHG}$ vs. $I_{CHG}$ characteristics]{\centering $K_{ICHG}$ vs. $I_{CHG}$ characteristics (Source: [8])}
  		\label{fig:kichg}
  	\end{figure}
  \end{center}
@@ -182,7 +182,7 @@ Specifications of Panasonic NCR 18650 GA Li-Ion cell:
  The IC is connected in an external power path configuration by connecting an external PFET for the battery. The PFET turns on when there is no external supply available from the solar panels and the system has to be powered by the battery. It is also useful if the system has to be powered ON when the battery is over-discharged or dead. 
  
  
- Specifications and Operating Conditions of BQ25302:
+ Specifications and Operating Conditions of BQ25302 [8]:
 \begin{itemize}
  	\item Input Voltage: Upto 5 V
  	\item Output Voltage: Upto 4.2 V
@@ -233,18 +233,18 @@ frequency modulation (PFM) at light load currents.\\
 
 It has a shutdown quiescent current of typically 0.1 {$\mu$}A
 
- Specifications and Operating Conditions of TPS62203:
+ Specifications and Operating Conditions of TPS62203[9]:
 \begin{itemize}
 	\item Input Voltage: 3.6 - 5 V
 	\item Output Voltage:  3.3 V
-	\item Switching Frequency: 1MHz
+	\item Switching Frequency: 1 MHz
 	\item Output Current: 300 mA (max.)
 \end{itemize}
 
 
  LTC3426 was selected as the boost converter to provide step up voltage of the DC bus to supply the 5V loads. It has an internal 2 A MOSFET as the switch.\\
  
-  Specifications and Operating Conditions of LTC3426:
+  Specifications and Operating Conditions of LTC3426[10]:
  \begin{itemize}
  	\item Input Voltage: 3.6 - 5 V
  	\item Output Voltage: 5 V
