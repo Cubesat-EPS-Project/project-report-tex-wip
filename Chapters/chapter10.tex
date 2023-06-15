@@ -12,7 +12,7 @@ To test the efficiency of the demo boards, different tests like line regulation,
 	\label{fig:arch}
 \end{figure} 
 
-IRFZ44 is the MOSFET used to implement this circuit. It has a Vds on voltage of 10 V. A potentiometer is used to control the gate source voltage and the circuit to be tested is connected between the drain and source terminals. By varying the gate voltage, the drain source conduction can be controlled. The drain source voltage and current increases proportionally with increase in gate voltage and thus the setup acts as a resistive load. The setup implementation is as follows:-
+IRFZ44 is the MOSFET used to implement this circuit. It has a Vds on voltage of 10 V. A potentiometer is used to control the gate source voltage and the circuit to be tested is connected between the drain and source terminals. By varying the gate voltage, the drain source conduction can be controlled. The drain source voltage and current increases proportionally with increase in gate voltage and thus the setup acts as a resistive load. 
 % The working of the circuit is simple. The MOSFET is controlled by voltage on its gate. Till the voltage between gate and source (Vgs) is not higher than a certain value called Vth, the MOSFET is disabled, so no current will be flowing between drain and source. After Vth, the MOSFET starts a current flow and the value of this current will get higher as Vgs increases till a certain value where the MOSFET is fully on. So, by varying the voltage at the gate we change the current flow and by that we can simulate the load value. 
 %\\ \\
 
@@ -50,16 +50,16 @@ DC/DC converters have a specified input voltage operating range. To confirm the 
 % \\ \\
 % Additionally, this setup can be used to test and measure the turn-on time, turn-off time, and hold-up times. An oscilloscope is used for the ripple and for periodic and random deviation (PARD) measurements.
 %\\ \\
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\columnwidth]{IMGS/DCDCconverterTestSetup.jpg}
-	\caption{Test setup}
-	\label{fig:arch}
-\end{figure} 
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=\columnwidth]{IMGS/DCDCconverterTestSetup.jpg}
+%	\caption{Test setup}
+%	\label{fig:arch}
+%\end{figure} 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.9\columnwidth]{IMGS/TestSetupPics/TESTPIC_REG_MODULE.jpg}
+	\includegraphics[width=0.7\columnwidth]{IMGS/TestSetupPics/TESTPIC_REG_MODULE.jpg}
 	\caption{Regulation module test setup}
 	\label{fig:arch}
 \end{figure}
@@ -97,12 +97,12 @@ $V_{omax}$ = Vout at Vin max;
 $V_{omin}$ = Vout at Vin min; and
 $V_{onom}$ = Vout nominal.
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.9\columnwidth]{IMGS/TestSetupPics/Buck_out.jpg}
-	\caption{Testing buck converter in 3.3 V rail}
-	\label{fig:arch}
-\end{figure}
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=0.9\columnwidth]{IMGS/TestSetupPics/Buck_out.jpg}
+%	\caption{Testing buck converter in 3.3 V rail}
+%	\label{fig:arch}
+%\end{figure}
 
 \pagebreak
 
