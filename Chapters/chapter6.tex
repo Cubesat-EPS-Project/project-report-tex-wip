@@ -6,10 +6,10 @@
  
  Specifications:
  \begin{itemize}
- 	\item Average Open Circuit Voltage: 2.7V
- 	\item Maximum Power Point Voltage: 2.41V
+ 	\item Average Open Circuit Voltage: 2.7 V
+ 	\item Maximum Power Point Voltage: 2.41 V
  	\item Average Short Circuit Current: 520.2 mA
- 	\item Maximum Power Point Current: 504.4mA
+ 	\item Maximum Power Point Current: 504.4 mA
  \end{itemize}
 It has an average efficiency of 29.8\% at 1353 $W/m^{2}$. This solar cell is excellent for space applications. 
 \\
@@ -24,13 +24,13 @@ Power from a solar panel, P :\\
 \\  $\eta$ = conversion efficiency of cell (take 20\% for contingency)
 \\  $\alpha$ = angle between normal of cell and incident light (avg: $35^{o} $)\\ \\
 Area of solar cell at one face : 0.0032 * 2 = 0.0064 $m^2$\\
-\\ \\ Therefore, $P = 1367 W/m^2 \times 0.0064 \times 20  \times cos 35^{o} $ = 1.43W\\
+\\ \\ Therefore, $P = 1367 W/m^2 \times 0.0064 \times 20  \times cos 35^{o} $ = 1.43 W\\
 
 Assume two faces of CubeSat is lit by sunlight every time except eclipse and total sun time($T_{s}$) is 1 hour (from orbital parameters).
 \\ \\ Therefore, total energy produced is, $P \times  T_{s}$ = $(1.43 \times 2) \times 1$ = 2.86 Wh
 \\ \\ \textbf{Of all modes specified in power budget, nominal mode at sun phase with transmission and payload ON consumes the most energy (1.016 Wh), and most energy consumed at eclipse phase is 0.769 Wh. This add upto 1.785 Wh, which is the worst case energy demand. This can be compensated by the designed solar panel configuration.}
 \\
-Solar panels are connected in such a way that each side has two cells connected in series.The maximum voltage developed per side is 4.4V and the maximum current that can be generated per side at peak power point is 0.5A.
+Solar panels are connected in such a way that each side has two cells connected in series.The maximum voltage developed per side is 4.4 V and the maximum current that can be generated per side at peak power point is 0.5 A.
 Panels on opposite sides are connected in parallel.
 
 
@@ -47,19 +47,19 @@ the best approximation. MPPT controllers use different algorithms such as {\bf P
 \\ \\
 The SPV1040 was chosen as the MPPT IC. It is a boost converter with duty ratio controlled by Perturb and Observe MPPT algorithm. The perturb and observe algorithm is based on monitoring either the voltage or the current supplied by the DC power source unit so that the PWM signal duty cycle is increased or decreased step-by-step according to the input power trend. This chip has inbuilt over-current protection and a cutoff mechanism if the solar panel connection is reverse-inserted to prevent damage to the IC and the external circuit.
 \\ \\
-The MPPT IC can only handle 1.8A of input current. Also, the input voltage of each MPPT must be much less than the desired output voltage for them to function properly. Depending on the configuration, the number of MPPT ICs was calculated to be 6.
+The MPPT IC can only handle 1.8 A of input current. Also, the input voltage of each MPPT must be much less than the desired output voltage for them to function properly. Depending on the configuration, the number of MPPT ICs was calculated to be 6.
 \\ \\
-Each side of cubesat consists of two 2.4V cells, each cells giving a maximum current output of 500mA for each MPPT, which is well below the maximum current the IC can handle. One cell from opposite sides are connected to its own MPPT, which is set to boost to 5.2V. The MPPTs are then connected in parallel.
+Each side of cubesat consists of two 2.4 V cells, each cells giving a maximum current output of 500 mA for each MPPT, which is well below the maximum current the IC can handle. One cell from opposite sides are connected to its own MPPT, which is set to boost to 5.2 V. The MPPTs are then connected in parallel.
 \\ \\
-Connecting multiple regulators in parallel can sometimes cause problems if one source is outputting a slightly smaller or larger voltage than the others. In most cases, the use of ballast resistors solves this problem. The footprint for a 25mohm ballast resistor will be chosen to be included in series with the output of each MPPT.\\
+Connecting multiple regulators in parallel can sometimes cause problems if one source is outputting a slightly smaller or larger voltage than the others. In most cases, the use of ballast resistors solves this problem. The footprint for a 25 mohm ballast resistor will be chosen to be included in series with the output of each MPPT.\\
 
 
 
 Specifications of  SPV1040:
 	\begin{itemize}
-	\item Input Voltage: 0.3 - 5.5V
-	\item Output Voltage: 5V
-	\item Switching Frequency: 100kHz
+	\item Input Voltage: 0.3 - 5.5 V
+	\item Output Voltage: 5 V
+	\item Switching Frequency: 100 kHz
 %	\item Inbuilt over-current, temperature protection
 	\item Efficiency: 95\%
 \end{itemize}
@@ -70,7 +70,7 @@ The MPPT circuit schematic is shown below:
 	\caption{MPPT circuit with SPV1040}
 	\label{fig:mpptsch}
 \end{figure}
-\subsection[mpptpcb]{PCB Layout}
+\subsection{PCB Layout}
 The PCB was designed in KiCad EDA software
 The MPPT PCB layout is shown below:
 \begin{figure}[H]
@@ -108,7 +108,7 @@ So, we need a battery with Beginning Of Life capacity of 3.845 Wh.\\ \\
 \\ \\ \hspace*{5cm}So, required Ah = $\frac{3.845 Wh}{3.6 V}$ = 1.068 Ah\\
 
 
-Considered options are Samsung 18650 and Panasonic 18650 Li-ion cells. Samsung 18650 has 2500 mAh capacity, 3.6V and a capacity loss of 60\% after 250 charging cycles ($N_{in}$=250). Panasonic 18650 has 3350 mAh capacity, 3.6V and a capacity loss of 60\% after 300 charging cycles ($N_{in}$=300).\\ \\
+Considered options are Samsung 18650 and Panasonic 18650 Li-ion cells. Samsung 18650 has 2500 mAh capacity, 3.6 V and a capacity loss of 60\% after 250 charging cycles ($N_{in}$=250). Panasonic 18650 has 3350 mAh capacity, 3.6 V and a capacity loss of 60\% after 300 charging cycles ($N_{in}$=300).\\ \\
 for a CubeSat mission of 3 months, required battery cycles will be around 1460 cycles (since each day, CubeSat goes through 16 sun phase).\\ \\
 Total no. of cycles a cell can provide = $N_{T}$\\ \\
 \hspace*{3cm} $N_{T} = \frac{N_{in} \times C_{B}}{C_{exp}}$
@@ -129,15 +129,15 @@ Total no. of cycles Panasonic 18650 can provide =$\frac{300 \times 3350}{450}$ =
 \textbf{Therefore, Panasonic 18650 is selected, as it can compensate the charging cycle requirements.}
 Specifications of Panasonic NCR 18650 GA Li-Ion cell:
 \begin{itemize}
-	\item Voltage: 3.7V - 4.2V
-	\item Capacity: 3500mAh
+	\item Voltage: 3.7 V - 4.2 V
+	\item Capacity: 3500 mAh
 	\item Can withstand 2200 charge-discharge cycles
 	\item 1800 cycles till capacity reduces to 60\%
 \end{itemize}
 \section[Battery Charger]{Battery Charger}
  The battery also needs a charger to regulate its current and voltage while charging.
  BQ25302, a synchronous Buck Battery Charger IC was selected and connected in external power path mode as given in the data-sheet. The BQ25302 is a highly-integrated standalone
- switch-mode battery charger for single cell Li-Ion batteries. It supports input voltage in the range of 4.1V to 6.2V and maximum charging current of 2A. It has a very low quiescent current of 200nA to conserve battery during idle.
+ switch-mode battery charger for single cell Li-Ion batteries. It supports input voltage in the range of 4.1 V to 6.2 V and maximum charging current of 2 A. It has a very low quiescent current of 200 nA to conserve battery during idle.
  It detects the charge
  voltage setting at startup and charges the battery in four phases: battery short, pre - conditioning, constant
  current, and constant voltage. \\
@@ -152,7 +152,7 @@ Specifications of Panasonic NCR 18650 GA Li-Ion cell:
  The STAT pin output reports charging status and fault conditions. It is connected to REGN via a current
  limiting resistor and LED. Blinking LED indicated a fault condition.\\
  
- The battery charge voltage setting is done by the VSET pin. As the Panasonic NCR 18650 GA Li-Ion cell with a charge voltage of 4.2V was selected the VSET pin was shorted to ground to set the battery charge voltage to 4.2V.
+ The battery charge voltage setting is done by the VSET pin. As the Panasonic NCR 18650 GA Li-Ion cell with a charge voltage of 4.2 V was selected the VSET pin was shorted to ground to set the battery charge voltage to 4.2 V.
  
  
  To preserve battery life, the charging current has to be limited. The charging current provided to the battery by BQ25302 IC can be limited by adjusting the resistor value at the ICHG pin according to the equation below:
@@ -176,7 +176,7 @@ Specifications of Panasonic NCR 18650 GA Li-Ion cell:
  		\label{fig:kichg}
  	\end{figure}
  \end{center}
- From the fig. \ref{fig:kichg}, it is clear that the value of $K_{ICHG}$ should be 40200 to limit the charging current near to 1.2A. Thus, from equation \ref{eq:6.1} the calculated value of resistance at the ICHG pin is 33.5k\ohm.
+ From the fig. \ref{fig:kichg}, it is clear that the value of $K_{ICHG}$ should be 40200 to limit the charging current near to 1.2 A. Thus, from equation \ref{eq:6.1} the calculated value of resistance at the ICHG pin is 33.5 k\ohm.
  \\
  
  The IC is connected in an external power path configuration by connecting an external PFET for the battery. The PFET turns on when there is no external supply available from the solar panels and the system has to be powered by the battery. It is also useful if the system has to be powered ON when the battery is over-discharged or dead. 
@@ -184,11 +184,11 @@ Specifications of Panasonic NCR 18650 GA Li-Ion cell:
  
  Specifications and Operating Conditions of BQ25302:
 \begin{itemize}
- 	\item Input Voltage: Upto 5V
- 	\item Output Voltage: Upto 4.2V
- 	\item Switching Frequency: 1.2MHz
- 	\item Output Current: Limited to 1.2A by connecting a 33.5k resistor at ICHG pin 
- 	\item Efficiency: 94.3\% at 1A from 5V input 
+ 	\item Input Voltage: Upto 5 V
+ 	\item Output Voltage: Upto 4.2 V
+ 	\item Switching Frequency: 1.2 MHz
+ 	\item Output Current: Limited to 1.2 A by connecting a 33.5k resistor at ICHG pin 
+ 	\item Efficiency: 94.3\% at 1A from 5 V input 
  	\item Thermistor: Semitec 103AT-2 (10\si{\kilo\ohm})
  	\item Charging Temperature: Limited between 0 - 45 $^{o}C$
  \end{itemize}
@@ -228,28 +228,28 @@ for the charging voltage and the voltages of the satellite's subsystems. In most
 subsystems, the need for a specific voltage requires a regulation of either a step-up
 or a step-down of the supplied voltage. It can be done by buck
 convertor(step-down) and boost converter(step-up).\\
-TPS62203 was selected as the buck converter to provide step down voltage of the DC bus to supply the 3.3V loads. It is a high-efficiency synchronous step-down converter with up to 95\% efficiency. It operates with a 1MHz fixed frequency (PWM) at moderate loads to heavy load currents and operates with pulse
+TPS62203 was selected as the buck converter to provide step down voltage of the DC bus to supply the 3.3 V loads. It is a high-efficiency synchronous step-down converter with up to 95\% efficiency. It operates with a 1MHz fixed frequency (PWM) at moderate loads to heavy load currents and operates with pulse
 frequency modulation (PFM) at light load currents.\\
 
 It has a shutdown quiescent current of typically 0.1 {$\mu$}A
 
  Specifications and Operating Conditions of TPS62203:
 \begin{itemize}
-	\item Input Voltage: 3.6 - 5V
-	\item Output Voltage:  3.3V
+	\item Input Voltage: 3.6 - 5 V
+	\item Output Voltage:  3.3 V
 	\item Switching Frequency: 1MHz
-	\item Output Current: 300mA (max.)
+	\item Output Current: 300 mA (max.)
 \end{itemize}
 
 
- LTC3426 was selected as the boost converter to provide step up voltage of the DC bus to supply the 5V loads. It has an internal 2A MOSFET as the switch.\\
+ LTC3426 was selected as the boost converter to provide step up voltage of the DC bus to supply the 5V loads. It has an internal 2 A MOSFET as the switch.\\
  
   Specifications and Operating Conditions of LTC3426:
  \begin{itemize}
- 	\item Input Voltage: 3.6 - 5V
- 	\item Output Voltage: 5V
- 	\item Switching Frequency: 1.2MHz
- 	\item Output Current: 500mA (max.)
+ 	\item Input Voltage: 3.6 - 5 V
+ 	\item Output Voltage: 5 V
+ 	\item Switching Frequency: 1.2 MHz
+ 	\item Output Current: 500 mA (max.)
  \end{itemize}
 All convertors operate in continuous conduction mode.\\
 
@@ -285,10 +285,10 @@ The screw terminals are used to connect to the power inputs and outputs of the P
  \begin{itemize}
  	\item EN pin of Buck IC: Setting LOW turns off the buck IC
  	\item SHDN pin of Boost IC: Setting LOW turns off the boost IC
- 	\item ON1 pin of IC1 (LTC4361): Setting HIGH turns off the MOSFET (IC2 - SI470DH) of the 3.3V bus
- 	\item ON2 pin of IC4 (LTC4361): Setting HIGH turns off the MOSFET (IC3 - SI470DH) of the 5V bus
- 	\item SCLSDA1 pins: I2C connection to micro-controller relaying measured parameters of 3.3V bus by U2 (LTC2990) 
- 	\item SCLSDA2 pins: I2C connection to micro-controller relaying measured parameters of 5V bus by U3 (LTC2990) 
+ 	\item ON1 pin of IC1 (LTC4361): Setting HIGH turns off the MOSFET (IC2 - SI470DH) of the 3.3 V bus
+ 	\item ON2 pin of IC4 (LTC4361): Setting HIGH turns off the MOSFET (IC3 - SI470DH) of the 5 V bus
+ 	\item SCLSDA1 pins: I2C connection to micro-controller relaying measured parameters of 3.3 V bus by U2 (LTC2990) 
+ 	\item SCLSDA2 pins: I2C connection to micro-controller relaying measured parameters of 5 V bus by U3 (LTC2990) 
  	\item SCLSDA3 pins: I2C connection to micro-controller relaying measured parameters of input bus ($V_{in}$) by U1 (LTC2990)
  \end{itemize}
 
@@ -324,7 +324,7 @@ The screw terminals are used to connect to the power inputs and outputs of the P
  STM32 is a ARM Cortex M4 32-bit micro-controller having a flash memory of 512 Kb. It can have upto 81 I/O ports with interrupt capabilities. It can have upto 78 fast I/Os upto 42 MHz, 3 I2C interfaces, 3 USARTs, 4 SPIs etc. We selected STM32401RE development board to test its capabilities, and one of its advantage is that, it can be programmed using Arduino IDE or even MATLAB, apart from its own programming IDE called STM32CUBE IDE.
 
 \section{EPS PCB Design as per PC/104 Specifications}
-  After all the selected components are tested separately and their proper working is ensured, these components can be combined together in a single PCB. This PCB is a four layer PCB with separate 3.3 and 5V power planes and the bottom layer as the ground plane. A PC/104 connector is used for the ease of stackability of subsystems. As our aim is to design a 1U CubeSat, the PCB dimensions are limited to 9.5cm x 9.5 cm. For simplifying the design process in KiCad, hierarchical sheets feature was used and the sheets were linked using global labels. The schematics of the different components in the EPS are shown below:
+  After all the selected components are tested separately and their proper working is ensured, these components can be combined together in a single PCB. This PCB is a four layer PCB with separate 3.3 and 5 V power planes and the bottom layer as the ground plane. A PC/104 connector is used for the ease of stackability of subsystems. As our aim is to design a 1U CubeSat, the PCB dimensions are limited to 9.5 cm x 9.5 cm. For simplifying the design process in KiCad, hierarchical sheets feature was used and the sheets were linked using global labels. The schematics of the different components in the EPS are shown below:
 
   \begin{figure}[h]
  	\centering

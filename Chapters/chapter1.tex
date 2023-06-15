@@ -68,48 +68,18 @@ The aim of this project is to determine requirements for a typical CubeSat Elect
 
 \section{Literature Review}
 \justifying
-The EPS is a critical component of a CubeSat as it powers all the subsystems in the satellite. There are different EPS architectures of based on DC bus regulation and interface of PV panels [1].
-\\ \\
-The main challenge for the development of CubeSats is to fit all the necessary equipment within the standard frame size while meeting the weight constraints. The EPS design is crucial for the successful CubeSats mission, which needs to consider several factors such as mission duration, orbit altitude, inclination angle, size of PV panels and its arrangement, load profile, volume and weight limits, radiation effects, overall efficiency, simplicity of control, component count, flexibility in battery configuration, reliability, and fault-tolerant capability. 
-\\ \\
-One of the important steps in EPS design is the selection of most suitable EPS architecture. The different types of CubeSat EPS architectures are shown in Figure. 
-\\ \\
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\columnwidth]{IMGS/EPSarchitectures.jpg}
-	\caption{CubeSat EPS architectures}
-	\label{fig:arch}
-\end{figure} 
-\\ \\
-Based on the interfacing of PV panels, the EPS architectures are classified as direct energy transfer (DET) and peak power tracking (PPT) architectures. 
-\\ \\
-In the DET architecture, the PV panels are directly connected to the battery and/or load equipment via diodes. It also uses a shunt regulator in parallel with the PV panels to absorb excess power when the battery reaches full-charge condition.
-\\ \\
- In the PPT architecture, the PV panels are interfaced with a power electronic converter to extract the maximum power from the panels under widely varying operating conditions such as solar irradiation, PV panel temperature, and inclination angle. 
- \\ \\
-The DET architecture requires matching of PV panel characteristics and the dc-bus voltage to generate maximum possible power which is not straightforward in the space missions. Therefore, the majority of CubeSats utilize the PPT architecture to maximize the solar energy harvest, which has limited PV panel capacity and storage capacity due to strict volume and weight constraints. 
-\\ \\
-The PPT architectures are further classified based on dc-bus voltage regulation: unregulated dc-bus, regulated dc-bus; and sun-regulated dc-bus. 
-\\ \\
-The unregulated dc-bus EPS architecture has the battery terminals directly connected to dc-bus. When the battery voltage reaches its upper limit, the MPPT converter is operated in voltage regulation mode to avoid further charging of the battery. 
-\\ \\
-The regulated dc-bus EPS architecture interfaces the battery with a dc–dc converter to maintain the dc-bus voltage at the predefined value. This architecture enables the operation of CubeSat at higher dc-bus voltage so that conduction and ohmic losses are reduced. 
-\\ \\
-In the sun regulated dc-bus EPS architecture, the dc-bus voltage is maintained at reference value only during the sunlit period. During the eclipse period, the battery gets connected to the dc-bus via a diode to supply the loads.
-\\ \\
-
- This project focuses on the design of an EPS with a regulated DC bus and MPPT tracking.
+The EPS is a critical component of a CubeSat as it powers all the subsystems in the satellite. There are different EPS architectures of based on DC bus regulation and interface of PV panels [1]. This project focuses on the design of an EPS with a regulated DC bus and MPPT tracking.
 %
 %[1] shows the comparison between different CubeSat EPS architectures, from which we have identified the architecture with maximum power point tracking and a regulated DC buses to be most suitable for our application.
 \\
 
-Based on the difference between centralized and distributed architecture was discussed in [2] and we have selected centralized architecture.
+Based on the difference between centralized and distributed architectures discussed in [2], we have selected distributed architecture. Distributed architecture has various advantages like increased scalability, fault tolerance and often more cost effective than centralized architecture.
 \\
 
-As discussed in [3], solar panels operate at their most efficient points with a power point tracking algorithm, allowing the extraction of maximum power from the solar panels. Hence, peak power transfer is preferred to direct power transfer.
+As discussed in [3], solar panels operate at their most efficient points with a power point tracking algorithm, allowing the extraction of maximum power from the solar panels. Hence, peak power transfer is preferred to direct power transfer. Various power point tracking algorithms were reviewed and Perturb and Observe algorithm was selected as the best option for the EPS design.
 \\
 
 Different battery technologies used in CubeSats were discussed in [4] and Li-ion cells were selected as the energy storage device due to their high energy density and higher number of charge discharge cycles compared to LiPo and NiMH batteries.
 \\
 
-From [5], the optimum ambient temperature for charging a Lithium ion battery is +5°C to +45°C and thus, charging is limited to this range of temperature.
+From [5], the optimum ambient temperature for charging a Lithium ion battery is +5°C to +45°C and thus, charging is limited to this range of temperature. Various charging methods were also reviewed for selecting the IC's which can implement the best battery charging method.
