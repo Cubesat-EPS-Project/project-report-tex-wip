@@ -389,12 +389,19 @@ The screw terminals are used to connect to the power inputs and outputs of the P
  \end{figure}
 
 
+ 
+The CubeSat is equipped with six solar panels on each side. Two solar panels are connect to each MPPT. Thus, three MPPTs are used.
+There are three buck converters and three boost converters. These converters supply regulated voltage to the subsystems of the satellite and other critical devices of the EPS.
+
   \begin{figure}[H]
  	\centering
  	\includegraphics[width=0.99\columnwidth]{FrontMatter/pcb-Regulation Module.pdf}
  	\caption{\centering Power Regulation circuits}
  	\label{fig:reg 4lr}
  \end{figure}
+
+
+
  
    \begin{figure}[H]
  	\centering
@@ -425,6 +432,16 @@ The screw terminals are used to connect to the power inputs and outputs of the P
  	\label{fig:pc104 4lr}
  \end{figure}
  
+ \section{PCB Design}
+ PCB is designed as a four layer PCB with separate 3.3 and 5 V power planes and the bottom layer as the ground plane. PCB dimensions are limited to 9.5 cm x 9.5 cm.
+ 
+ 
+  \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=1\columnwidth]{IMGS/FINAL_EPS_FOOTPRINT_upscayl_4x_ultramix_balanced.jpg}
+ 	\caption{\centering PCB Layout of EPS PCB}
+ 	\label{fig:epsfp}
+ \end{figure}
  
 \section{3D Model}
 
