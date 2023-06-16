@@ -28,7 +28,7 @@ The desired functionalities also guide the design. The EPS must produce enough e
 
 \subsection{Constraints} 
 
-\subsubsection{Vacuum}
+\subsubsection*{Vacuum}
 
 The satellite is expected to be released in an elliptical orbit with an altitude between 350 and 1,000 km. At such altitudes, the atmosphere pressure can be neglected and considered as vacuum. Therefore, all components used in the satellite must withstand vacuum. The most sensitive component of the EPS is the batteries. The two threats of vacuum are:
 \begin{itemize}
@@ -36,7 +36,7 @@ The satellite is expected to be released in an elliptical orbit with an altitude
 \item Out gassing.
 \end{itemize}
 
-\subsubsection{Radiations}
+\subsubsection*{Radiations}
 
 Charged particles of solar wind, electrons, and protons, are captured by the earth magnetic field. They form the radiations belts, also known as the Van-Allen belts. There are two belts:
 \begin{itemize}
@@ -65,7 +65,7 @@ Spacecrafts need to be protected against radiations, especially if they go thoug
 
 The radiation dose is estimated to be more than 105 Sv. A protection against SEL can be provided to the subsystems with current-limiter circuits. There is no particular protection against SEU and SEB except reducing the effect of the radiations inside the satellite with a layer of shielding aluminium (less than 2.104 Sv with 2mm of aluminium). There are components designed and/or tested to be more resistant to radiations. Such components should be used in the more critical systems of the EPS.
 \\ \\
-\subsubsection{Temperature}
+\subsubsection*{Temperature}
 
 The temperatures in space, when the satellite is turned on, will essentially depend of the thermal design. The temperature ranges are not the same everywhere in the satellite. Thermal simulations give an idea of the temperature at different points of the CubeSat. The external temperature will vary the most (from $-33^{o}C$ to $+40^{o}C)$, the temperature of the EPS will stay between $-22^{o}C$ and $+37^{o}C$, and the temperature of batteries between $-22^{o}C$ and $+37^{o}C$. The EPS must thus be able to work within these ranges.
 
@@ -75,11 +75,11 @@ The temperatures in space, when the satellite is turned on, will essentially dep
 \item Lithium-Polymer batteries can withstand 0 to $+45^{o}C$ during charge and $-20^{o}C$ to $+60^{o}C$ during discharge (but with a significant loss of capacity under $0^{o}C)$. A solution must be found to maintain the batteries in these ranges of temperature.
 \end{itemize}
 
-\subsubsection{Vibrations and Accelerations during launch} 
+\subsubsection*{Vibrations and Accelerations during launch} 
 
 The CubeSat will be subjected to vibrations during the launch.The effects of acceleration during launch are not to be underestimated. The CubeSat has to be able to withstand an acceleration of 15 g, even if it will probably be lower in reality. Special attention must be paid to the fixation of heavy components. Also, components could be damaged by the bending of the PCB under vibrations and accelerations. Automotive components will be chosen whenever possible.
 
-\subsubsection{Temperatures during launch} 
+\subsubsection*{Temperatures during launch} 
 
 The launch vehicle will pass through several atmospheric layers with specific temperatures. Inside the launch vechile, the CubeSat will endure temperatures of $-40^{o}C to 80^{o}C$ during launch. Components of the EPS have to be able to withstand such temperatures during storage (the CubeSat is inactive during launch). Components with a working temperature range of $-40^{o}C to 85^{o}C$ should not have any problems.
 The batteries are still the most sensible component. Their storage temperature should stay between $-20^{o}C and 60^{o}C$. A passive solution must be found to protect them during launch. Thermal insulation and thermal inertia will certainly help.

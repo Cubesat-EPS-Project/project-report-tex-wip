@@ -213,7 +213,7 @@ The Battery Charger circuit schematic is shown below:
 	\label{fig:chargpcb3d}
 \end{figure}
 
-\pagebreak \justifying
+ \justifying
 
 
 
@@ -267,6 +267,7 @@ The Buck and Boost Converter circuit schematic is shown below:
 
 
 LTC4361-2 is selected as the over voltage and over current protection IC. It control an external N-channel MOSFET as a switch to cut the path of current if there is an event of over current or voltage. Manual control of the MOSFET is also possible which may be useful to turn off power to buses by the micro-controller as per different modes of operation of the CubeSat.
+The protection circuit schematic is shown in figure \ref{fig:prottecsch}.
 \\
 
  Voltage and current passing through each bus and subsystems are continuously monitored by sensors and this information is fed to the micro-controller. These measurements help in estimation of load requirement of subsystems and also help in triggering of protection circuits if a subsystem needs to be turned off in case of an occurrence of a fault. 
@@ -277,39 +278,65 @@ LTC4361-2 is selected as the over voltage and over current protection IC. It con
  \begin{figure}[h]
  	\centering
  	\includegraphics[width=\columnwidth]{IMGS/1.pdf}
- 	\caption{\centering Schematic of Buck and Boost circuit with Protection and Voltage and Current Measurement ICs}
+ 	\caption{\centering Schematic of Buck and Boost circuit with Voltage and Current Measurement ICs}
  	\label{fig:bubo2}
  \end{figure}
+ 
+  \begin{figure}[H]
+ 	\centering
+ 	\includegraphics[width=\columnwidth]{IMGS/Prot_Circ.pdf}
+ 	\caption{\centering Schematic of Protection Circuit}
+ 	\label{fig:prottecsch}
+ \end{figure}
+ 
+ 
 \end{center}
 The screw terminals are used to connect to the power inputs and outputs of the PCB. Pin header connectors are provided for connecting IC control pins to the micro-controller. The pin headers and their functions are given below:
  \begin{itemize}
- 	\item EN pin of Buck IC: Setting LOW turns off the buck IC
- 	\item SHDN pin of Boost IC: Setting LOW turns off the boost IC
- 	\item ON1 pin of IC1 (LTC4361): Setting HIGH turns off the MOSFET (IC2 - SI470DH) of the 3.3 V bus
- 	\item ON2 pin of IC4 (LTC4361): Setting HIGH turns off the MOSFET (IC3 - SI470DH) of the 5 V bus
+ 
+ 
+
  	\item SCLSDA1 pins: I2C connection to micro-controller relaying measured parameters of 3.3 V bus by U2 (LTC2990) 
  	\item SCLSDA2 pins: I2C connection to micro-controller relaying measured parameters of 5 V bus by U3 (LTC2990) 
  	\item SCLSDA3 pins: I2C connection to micro-controller relaying measured parameters of input bus ($V_{in}$) by U1 (LTC2990)
  \end{itemize}
 
 
-\subsection{PCB Layout}
+\subsection{PCB Layouts}
  A double layer PCB was designed from the schematic (Ref. Fig. 8.4). The second layer was used as the GROUND plane. The schematic and PCB design was done in KiCad EDA. 
  
-  \begin{figure}[h]
+  \begin{figure}[!ht]
  	\centering
- 	\includegraphics[width=0.6\columnwidth]{IMGS/1 pcb.jpg}
- 	\caption{\centering Buck and Boost circuit PCB - All Copper Layers only}
- 	\label{fig:bubopcb}
+ 	\includegraphics[width=0.6\columnwidth]{IMGS/prot_circ_layout2.png}
+ 	\caption{\centering Protection Circuit PCB - All Copper Layers only}
+ 	\label{fig:prpcb}
  \end{figure}
  
    \begin{figure}[H]
  	\centering
- 	\includegraphics[width=0.6\columnwidth]{IMGS/1 3d.jpg}
- 	\caption{\centering Buck and Boost circuit PCB - 3D Model}
- 	\label{fig:bubopcb3d}
+ 	\includegraphics[width=0.6\columnwidth]{IMGS/prot_circ_3d.png}
+ 	\caption{\centering Protection Circuit PCB - 3D Model}
+ 	\label{fig:prpcb3d}
  \end{figure}
-\pagebreak
+
+
+
+
+ 
+\begin{figure}[!ht]
+	\centering
+	\includegraphics[width=0.6\columnwidth]{IMGS/1 pcb.jpg}
+	\caption{\centering Buck and Boost circuit PCB - All Copper Layers only}
+	\label{fig:bubopcb}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\columnwidth]{IMGS/1 3d.jpg}
+	\caption{\centering Buck and Boost circuit PCB - 3D Model}
+	\label{fig:bubopcb3d}
+\end{figure}
+
 
  
  \section{Micro-controller}
@@ -331,7 +358,7 @@ The screw terminals are used to connect to the power inputs and outputs of the P
 \begin{table}[ht]
 	\centering
 	\resizebox{\textwidth}{!}{%
-		\begin{tabular}{|llll|l|}
+		\begin{tabular}{|cclc|c|}
 			\hline
 			\multicolumn{1}{|l|}{\bf{Sl No.}} & \multicolumn{1}{l|}{\bf{Manufacturer Part\#}} & \multicolumn{1}{l|}{\bf{Description}} & \bf{Qty.} & \bf{Total + GST} \\ \hline
 			\multicolumn{1}{|l|}{1} & \multicolumn{1}{l|}{C1210C475K4RACAUTO} & \multicolumn{1}{l|}{MLCC - SMD/SMT 16V   4.7uF X7R 1210 10\% AEC-Q200} & 4 & 287.4004211 \\ \hline
@@ -387,20 +414,20 @@ The screw terminals are used to connect to the power inputs and outputs of the P
  	\caption{\centering Battery Charger}
  	\label{fig:batt 4lr}
  \end{figure}
-
-
- 
-The CubeSat is equipped with six solar panels on each side. Two solar panels are connect to each MPPT. Thus, three MPPTs are used.
-There are three buck converters and three boost converters. These converters supply regulated voltage to the subsystems of the satellite and other critical devices of the EPS.
-
-  \begin{figure}[H]
+The CubeSat is equipped with six solar panels on each side. Two solar panels are connect to each MPPT. Thus, three MPPTs are used. \\There are three buck converters and three boost converters. These converters supply regulated voltage to the subsystems of the satellite and other critical devices of the EPS.
+  \begin{figure}[!ht]
  	\centering
- 	\includegraphics[width=0.99\columnwidth]{FrontMatter/pcb-Regulation Module.pdf}
+ 	\includegraphics[width=\columnwidth]{FrontMatter/pcb-Regulation Module.pdf}
  	\caption{\centering Power Regulation circuits}
  	\label{fig:reg 4lr}
  \end{figure}
 
-
+  \begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\columnwidth]{FrontMatter/pcb-MeasurementCircuit.pdf}
+	\caption{\centering Voltage and Current measurement circuits}
+	\label{fig:mes 4lr}
+\end{figure}
 
  
    \begin{figure}[H]
@@ -410,16 +437,11 @@ There are three buck converters and three boost converters. These converters sup
  	\label{fig:protecc 4lr}
  \end{figure}
 
-  \begin{figure}[H]
- 	\centering
- 	\includegraphics[width=0.99\columnwidth]{FrontMatter/pcb-MeasurementCircuit.pdf}
- 	\caption{\centering Voltage and Current measurement circuits}
- 	\label{fig:mes 4lr}
- \end{figure}
+
  
    \begin{figure}[H]
  	\centering
- 	\includegraphics[width=0.99\columnwidth]{FrontMatter/pcb-STM32F405board.pdf}
+ 	\includegraphics[width=\columnwidth]{FrontMatter/pcb-STM32F405board.pdf}
  	\caption{\centering STM32 Micro-controller}
  	\label{fig:uC 4lr}
  \end{figure}
@@ -431,7 +453,7 @@ There are three buck converters and three boost converters. These converters sup
  	\caption{\centering PC/104 Connection Pins (Only pins connected to the EPS are labelled)}
  	\label{fig:pc104 4lr}
  \end{figure}
- 
+ \pagebreak
  \section{PCB Design}
  PCB is designed as a four layer PCB with separate 3.3 and 5 V power planes and the bottom layer as the ground plane. PCB dimensions are limited to 9.5 cm x 9.5 cm.
  
@@ -448,7 +470,7 @@ There are three buck converters and three boost converters. These converters sup
  
  \begin{figure}[H]
  	\centering
- 	\includegraphics[width=0.99\columnwidth]{IMGS/eps_fr_4k.jpg}
+ 	\includegraphics[width=\columnwidth]{IMGS/eps_fr_4k.jpg}
  	\caption{\centering 3D Model of EPS PCB (Top Layer)}
  	\label{fig:eps3dfr}
  \end{figure}

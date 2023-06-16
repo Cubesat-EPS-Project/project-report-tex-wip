@@ -9,15 +9,16 @@ The power budget of a CubeSat is a critical aspect of its design and operation, 
  
 \begin{table}[]
 	\begin{center}
-	\begin{tabular}{|l|l|}
-		\hline
-		\textbf{Parameter} & \textbf{Value} \\ \hline
-		Orbital altitude   & 590 km         \\ \hline
-		Orbital radius     & 6968.14 km     \\ \hline
-		Flight velocity    & 7.563 km/s     \\ \hline
-		Orbital period     & 96.483 min     \\ \hline
-		Eclipse time       & 31.164 min     \\ \hline
-		Daylight time      & 65.319 min     \\ \hline
+	\begin{tabular}{c c}
+		\toprule
+		\textbf{Parameter} & \textbf{Value} \\ \midrule\midrule
+		Orbital altitude   & 590 km         \\ 
+		Orbital radius     & 6968.14 km     \\ 
+		Flight velocity    & 7.563 km/s     \\ 
+		Orbital period     & 96.483 min     \\ 
+		Eclipse time       & 31.164 min     \\ 
+		Daylight time      & 65.319 min     \\ 
+		\bottomrule
 	\end{tabular}
 \caption{Orbital Parameters}
 \label{table:1}
@@ -164,5 +165,5 @@ The CubeSat has an orbital altitude of 590 km with an orbital radius of 6968.14 
  To calculate battery and solar panel specifications, the peak power budget of the CubeSat is only considered since the power requirements won’t exceed that requirements. The other modes are only documented for designing the functioning of micro-controller which controls the EPS. Of all the modes, highest power consumption during sun phase is when transmission and payload active (1.016 Wh), and highest power consumption during eclipse phase is when transmission and payload active (0.769 Wh).
  \\
  From the peak power budget table, the highest energy requirement is 2.307 Wh.
- \\
+ 
 % Add a 50\% contingency $=>$ 3.055Wh
